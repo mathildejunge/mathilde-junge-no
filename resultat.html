@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tech-sjekken din | Mathilde Junge</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23ff66c4%22/%3E%3Ctext x=%2250%22 y=%2268%22 font-size=%2252%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22%230d0b0c%22%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@500;700&display=swap">
+<style>
+  :root {
+    --rosa: #ff66c4; --rosa-dyp: #d6339b; --rosa-lys: #ffe3f3;
+    --svart: #0d0b0c; --kull: #1c1719; --hvit: #ffffff; --grunn: #fdf8f9;
+    --tekst: #1c1719; --dempet: #6b5d63; --linje: #ecdfe4;
+    --rosegull: #e0a98f; --rosegull-lys: #f3cdb9;
+    --display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+    --brod: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+    --maks: 1100px;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  body { margin: 0; background: var(--grunn); color: var(--tekst); font-family: var(--brod); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--rosa); outline-offset: 3px; border-radius: 4px; }
+  .ramme { width: 100%; max-width: var(--maks); margin: 0 auto; padding-inline: 24px; }
+  @media (max-width: 480px) { .ramme { padding-inline: 18px; } body { font-size: 17px; } }
+  h1, h2, h3 { font-family: var(--display); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance; margin: 0; }
+  h2 { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 800; }
+  h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  .hand { font-family: var(--hand); font-weight: 700; }
+  .etikett { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rosa-dyp); }
+  .knapp { display: inline-flex; align-items: center; gap: 10px; font-family: var(--brod); font-weight: 700; font-size: 1rem; padding: 15px 26px; border-radius: 999px; text-decoration: none; border: 2px solid var(--svart); cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  .knapp-rosa { background: var(--rosa); color: var(--svart); box-shadow: 4px 4px 0 var(--svart); }
+  .knapp-rosa:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--svart); }
+  .knapp-strek { background: transparent; color: var(--svart); }
+  .knapp-strek:hover { background: var(--svart); color: var(--hvit); }
+
+  .meny { background: var(--grunn); border-bottom: 1px solid var(--linje); }
+  .meny .ramme { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .logo { font-family: var(--display); font-weight: 800; font-size: 1.3rem; text-decoration: none; letter-spacing: -0.02em; white-space: nowrap; }
+  .logo span { color: var(--rosa-dyp); }
+  .meny .knapp { padding: 10px 18px; font-size: 0.92rem; box-shadow: 3px 3px 0 var(--svart); }
+  @media (max-width: 420px) { .meny .knapp .lang { display: none; } }
+
+  section { padding-block: clamp(56px, 8vw, 96px); }
+
+  /* Toppen */
+  .topp { padding-block: clamp(40px, 6vw, 72px) clamp(48px, 7vw, 88px); }
+  .topp .ramme { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .topp h1 { font-size: clamp(2.5rem, 6vw, 4.6rem); font-weight: 800; margin-top: 14px; }
+  .topp h1 .felle { background: linear-gradient(transparent 60%, var(--rosa) 60%, var(--rosa) 90%, transparent 90%); padding-inline: 2px; }
+  .topp .kort { font-size: clamp(1.15rem, 1.8vw, 1.4rem); margin-top: 20px; max-width: 36ch; }
+  .brikker { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .brikke { border: 1.5px solid var(--svart); border-radius: 999px; padding: 6px 14px; font-size: .9rem; font-weight: 600; background: var(--hvit); }
+  .brikke b { color: var(--rosa-dyp); }
+
+  .maaler { background: var(--svart); color: var(--hvit); border-radius: 24px; padding: 28px 26px; box-shadow: 6px 6px 0 var(--rosa); }
+  .maaler .etikett { color: var(--rosa); }
+  .maaler .tall { font-family: var(--display); font-weight: 800; font-size: 4.4rem; line-height: 1; margin-top: 10px; font-variant-numeric: tabular-nums; }
+  .maaler .tall small { font-size: 1.4rem; color: #a99ca2; font-weight: 700; }
+  .maaler .nivaa { font-family: var(--hand); font-size: 1.7rem; color: var(--rosegull); margin-top: 4px; }
+  .bar { height: 14px; border-radius: 99px; background: #3a3034; margin-top: 16px; overflow: hidden; }
+  .bar span { display: block; height: 100%; width: 0; border-radius: 99px; background: linear-gradient(90deg, var(--rosegull), var(--rosa)); transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+  .skala { display: flex; justify-content: space-between; font-size: .78rem; color: #a99ca2; margin-top: 8px; }
+  .maaler .forklar { font-size: .88rem; color: #c9bec3; margin-top: 16px; }
+  @media (max-width: 860px) { .topp .ramme { grid-template-columns: 1fr; } }
+
+  /* Hvor du står */
+  .staar { background: var(--hvit); border-block: 1px solid var(--linje); }
+  .staar .ramme { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+  .staar .tekst p + p { margin-top: 16px; }
+  .staar .tekst { max-width: 62ch; }
+  .fase { margin-top: 22px; padding: 18px 20px; border-radius: 16px; background: var(--rosa-lys); font-size: 1rem; }
+  .fase b { font-family: var(--display); }
+  @media (max-width: 860px) { .staar .ramme { grid-template-columns: 1fr; } }
+
+  /* Koster */
+  .koster { background: var(--svart); color: var(--hvit); }
+  .koster .etikett { color: var(--rosa); }
+  .koster h2 { margin-top: 12px; max-width: 20ch; }
+  .tallrad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #3a3034; border: 1px solid #3a3034; border-radius: 24px; overflow: hidden; margin-top: 40px; }
+  .tallrad > div { background: var(--kull); padding: 26px 24px; }
+  .tallrad .stort { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; color: var(--rosa); font-variant-numeric: tabular-nums; }
+  .tallrad .hva { color: #c9bec3; font-size: .98rem; margin-top: 10px; }
+  .koster .setning { margin-top: 32px; font-size: 1.15rem; color: #eadfe3; max-width: 60ch; }
+  .koster .regnestykke { margin-top: 12px; font-size: .88rem; color: #a99ca2; }
+  @media (max-width: 760px) { .tallrad { grid-template-columns: 1fr; } }
+
+  /* Droppe + plan */
+  .toveis .ramme { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 48px); align-items: start; }
+  .kort-boks { background: var(--hvit); border: 2px solid var(--svart); border-radius: 24px; padding: clamp(24px, 3vw, 34px); }
+  .kort-boks h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 10px; }
+  .droppliste, .planliste { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 14px; }
+  .droppliste li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; }
+  .droppliste .kryss { width: 28px; height: 28px; border-radius: 50%; background: var(--svart); color: var(--rosa); display: grid; place-items: center; font-weight: 800; font-size: .95rem; margin-top: 2px; }
+  .droppliste .ting { text-decoration: line-through; text-decoration-color: var(--rosa); text-decoration-thickness: 3px; font-weight: 700; }
+  .droppliste .hvorfor { display: block; color: var(--dempet); font-size: .98rem; margin-top: 2px; }
+  .planliste li { border-left: 3px solid var(--rosa); padding-left: 16px; }
+  .planliste .naar { font-family: var(--display); font-weight: 800; display: block; font-size: 1.05rem; }
+  .planliste .gjor { color: var(--kull); }
+  @media (max-width: 860px) { .toveis .ramme { grid-template-columns: 1fr; } }
+
+  /* Plattform */
+  .plattform { background: var(--hvit); border-block: 1px solid var(--linje); }
+  .plattform .ramme { max-width: 900px; }
+  .plattform h2 .navn { color: var(--rosa-dyp); }
+  .plattform .hvorfor { margin-top: 18px; font-size: 1.1rem; max-width: 62ch; }
+  .oppskrift { list-style: none; counter-reset: steg; padding: 0; margin: 32px 0 0; display: grid; gap: 16px; }
+  .oppskrift li { counter-increment: steg; display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; background: var(--grunn); border: 1px solid var(--linje); border-radius: 18px; padding: 20px; }
+  .oppskrift li::before { content: counter(steg); width: 48px; height: 48px; border-radius: 50%; background: var(--rosa); border: 2px solid var(--svart); display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 1.3rem; }
+  .oppskrift b { display: block; font-family: var(--display); font-size: 1.1rem; }
+  .oppskrift span { color: var(--dempet); }
+  .ogsaa { margin-top: 22px; color: var(--dempet); font-size: .98rem; }
+
+  /* TUK */
+  .tuk { background: var(--svart); color: var(--hvit); }
+  .tuk .ramme { display: grid; grid-template-columns: 1fr; gap: clamp(28px, 4vw, 48px); }
+  .fotoband { position: relative; margin: 0; height: clamp(240px, 30vw, 380px); border-radius: 24px; overflow: hidden; border: 2px solid var(--rosegull); background: var(--kull); display: flex; justify-content: center; }
+  .fotoband .bak { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; filter: blur(26px) saturate(1.1) brightness(.75); }
+  .fotoband .fram { position: relative; height: 100%; width: auto; max-width: 100%; object-fit: contain; box-shadow: 0 0 60px rgba(0,0,0,.35); }
+  .fotoband .ai-merke { z-index: 3; }
+  @media (max-width: 600px) { .fotoband { height: 260px; } }
+  .ai-merke { position: absolute; top: 14px; right: 14px; background: rgba(13,11,12,.78); color: var(--hvit); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; padding: 5px 10px; border-radius: 999px; }
+  .tuk .etikett { color: var(--rosa); }
+  .tuk h2 { margin-top: 12px; }
+  .tuk h2 .kaos { font-family: var(--hand); color: var(--rosegull); font-size: 1.2em; letter-spacing: 0; }
+  .tuk p.tekst { color: #d9cfd3; margin-top: 18px; max-width: 54ch; }
+  .tuk ul { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; color: #eadfe3; }
+  .tuk ul li::before { content: "♡ "; color: var(--rosa); font-weight: 700; }
+  .tuk .knapperad { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 30px; }
+  .tuk .knapp-rosa { border-color: var(--rosa); box-shadow: 4px 4px 0 var(--rosegull); }
+  .tuk .pris { color: #c9bec3; font-size: .95rem; }
+  @media (max-width: 860px) { .tuk .ramme { grid-template-columns: 1fr; } }
+
+  .hilsen { text-align: center; }
+  .hilsen .ramme { max-width: 640px; }
+  .hilsen p { color: var(--dempet); }
+  .hilsen .hand { font-size: 2.4rem; color: var(--tekst); margin-top: 16px; }
+  .hilsen .lenker { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
+
+  .tom { text-align: center; padding-block: 120px; }
+  .tom p { color: var(--dempet); margin-block: 16px 28px; }
+
+  footer { background: var(--svart); color: #9a8c92; padding-block: 28px; font-size: .88rem; }
+  footer .ramme { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+</style>
+</head>
+<body>
+
+<header class="meny">
+  <div class="ramme">
+    <a class="logo" href="index.html">Mathilde Junge<span>.</span></a>
+    <a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about">Bli med<span class="lang">&nbsp;i Tech uten Kaos</span></a>
+  </div>
+</header>
+
+<main id="innhold"></main>
+
+<footer>
+  <div class="ramme">
+    <span>© 2026 Mathilde Junge AS · Org.nr. 934 428 374</span>
+    <span>Bildet av Mathilde er AI-generert, med henne selv som modell.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var FELLER = {
+    kurs: {
+      navn: "Kursfella",
+      kort: "Du har kjøpt kunnskap. Det du mangler er noen som hjelper deg å bruke den.",
+      staar: [
+        "Du har kjøpt kurs. Du har sett videoer. Du har lagret hundrevis av innlegg. Og hver gang du står fast, er den første tanken at du må lære mer før du kan gå videre.",
+        "Du er ikke lat, og du er ikke dum. Du tar ting på alvor, og derfor vil du kunne det ordentlig før du gjør det. Problemet er at hvert nytt kurs gir deg mer informasjon og mindre plass i hodet. Du sitter igjen med fem halvferdige moduler og følelsen av at du burde kunne mer enn du kan.",
+        "Sannheten er kjedelig enkel: du vet allerede nok til å ta neste steg. Du trenger hjelp til å bruke det du har."
+      ],
+      koster: "Hvert kurs du ikke fullfører koster deg to ganger. Først pengene, og så selvtilliten, fordi det blir enda et bevis på at «jeg får det ikke til».",
+      droppe: [
+        ["Neste kurs i handlekurven", "La det ligge der i 30 dager. Det er der fortsatt etterpå."],
+        ["Alle modulene du ikke trenger nå", "Du trenger bare den ene som løser problemet du har i dag."],
+        ["Tanken om at du må kunne alt før du selger", "Ingen kan alt. De som selger, begynte før de var klare."]
+      ],
+      plan: [
+        ["Uke 1", "Skriv ned alle kursene du har kjøpt, og velg ett. Bare ett."],
+        ["Uke 2", "Finn den ene leksjonen som løser problemet du står i nå. Se den, og gjør oppgaven ferdig."],
+        ["Uke 3 og 4", "Bruk det du lærte på noe ekte i businessen din. Står du fast, spør du noen, i stedet for å kjøpe et nytt kurs."]
+      ]
+    },
+    kopi: {
+      navn: "Kopifella",
+      kort: "Du prøver å bygge en business som er laget for en gründer med et team på 14.",
+      staar: [
+        "Du ser hva de store gründerne gjør. Funnels, webinarer, daglig posting, lanseringer og email-sekvenser på 21 dager. Og du tenker at sånn må det være, for det er jo sånn de har lykkes.",
+        "Det du ikke ser, er teamet bak, budsjettet og årene de har brukt. Modellen deres krever mer tid, penger og kapasitet enn du har akkurat nå, og da føles det som om det er du som ikke strekker til.",
+        "Du trenger ikke kopiere infrastrukturen til en som omsetter for 50 millioner når målet er dine første ti kunder."
+      ],
+      koster: "Du bruker energien på å bygge maskineri, og da blir det lite igjen til å snakke med kunder. Når maskineriet ikke gir resultater, tror du at feilen ligger hos deg.",
+      droppe: [
+        ["Funnelen med 47 steg", "Ett tilbud og én side holder lenge."],
+        ["Å poste hver dag overalt", "Velg én kanal, og bli der."],
+        ["Webinar, challenge og lansering samtidig", "Velg én måte å selge på dette kvartalet."]
+      ],
+      plan: [
+        ["Uke 1", "Skriv ned alt du tror du må ha på plass. Stryk alt som ikke hjelper deg å få neste kunde."],
+        ["Uke 2", "Velg ett tilbud og én kanal. Skriv tre innlegg som forklarer hvem du hjelper og hvordan."],
+        ["Uke 3 og 4", "Snakk med fem mennesker i målgruppen din. De fleste første salg kommer fra samtaler."]
+      ]
+    },
+    avhengig: {
+      navn: "Knappefella",
+      kort: "Du betaler noen hver gang en knapp skal flyttes, og du forstår fortsatt ikke helt din egen business.",
+      staar: [
+        "Du har gjort det mange smarte gründere gjør: du har kjøpt deg hjelp til det tekniske. Det løste problemet der og da, og det var helt riktig å gjøre i starten.",
+        "Men neste gang noe skulle endres, måtte du betale igjen. Et bilde på landingssiden, en link som ikke virker, en automatisering som stoppet. Du venter på svar, og businessen står stille imens.",
+        "Jeg har vært den VA-en du ringer. Derfor vet jeg at mye av dette kan du lære å fikse selv, sånn at du bare betaler for hjelp når det gir mening."
+      ],
+      koster: "Du blir avhengig av andres kalender, og hver lille endring koster både penger og dager. Og det verste: du føler deg som en gjest i din egen business.",
+      droppe: [
+        ["Å be om hjelp til timinutters-jobber", "Bytte bilde, oppdatere en link eller endre en tekst kan du lære én gang."],
+        ["Tanken om at du «ikke er teknisk»", "Du trenger ikke være teknisk. Du trenger å lære akkurat nok."],
+        ["Systemer du ikke vet hvorfor du har", "Alt du betaler for, skal du kunne forklare hva gjør."]
+      ],
+      plan: [
+        ["Uke 1", "Logg inn på plattformen din og klikk deg gjennom hver meny. Skriv ned det du ikke forstår."],
+        ["Uke 2", "Velg tre små endringer du vanligvis betaler for, og gjør dem selv. Få hjelp når du står fast."],
+        ["Uke 3 og 4", "Lag din egen lille oppslagsbok med skjermbilder, så du husker hvordan du gjorde det neste gang."]
+      ]
+    },
+    fane: {
+      navn: "Fanefella",
+      kort: "Du prøver å lære alt selv, og ender med 48 faner åpne klokka elleve om kvelden.",
+      staar: [
+        "Du er flink til å finne ut av ting. Du googler, ser YouTube, spør i Facebook-grupper og lagrer innlegg. Du gir deg ikke.",
+        "Problemet er at du finner 17 forskjellige svar på det samme spørsmålet. Halvparten er utdaterte, og resten er laget for en annen plattform enn den du bruker. Du sitter igjen med mer rot enn da du startet, og kvelden er borte.",
+        "Du trenger ikke flere svar. Du trenger ett svar som passer akkurat ditt oppsett, fra noen som forklarer det sånn at du skjønner det."
+      ],
+      koster: "Timer. Mange timer. Timer du kunne brukt på kundene dine, på fagområdet ditt, eller på å lukke Mac-en klokka fire uten dårlig samvittighet.",
+      droppe: [
+        ["YouTube-videoer eldre enn ett år", "Plattformene endrer seg for fort. Knappen er sjelden der videoen sier."],
+        ["Facebook-grupper med 40 meninger", "Alle har et svar, og ingen kjenner oppsettet ditt."],
+        ["Å løse alt i kveld", "Skriv spørsmålet ned, og ta det med til noen som vet."]
+      ],
+      plan: [
+        ["Uke 1", "Sett en grense. Står du fast i mer enn 20 minutter, stopper du og skriver ned spørsmålet."],
+        ["Uke 2", "Samle spørsmålene, og få dem besvart på ett sted, av noen som kan se skjermen din."],
+        ["Uke 3 og 4", "Legg inn en fast tech-time i uka. Resten av uka har tech ikke lov å stjele kveldene dine."]
+      ]
+    },
+    hopp: {
+      navn: "Hoppefella",
+      kort: "Ny plattform, ny funnel, ny plan. Du bytter før noe rekker å virke.",
+      staar: [
+        "Du er kreativ og nysgjerrig, og du ser muligheter overalt. Så når noe ikke gir resultater etter tre uker, prøver du noe nytt. Ny contentplan. Ny funnel. Ny plattform. Ny AI-prompt.",
+        "Du er ikke useriøs. Ingen har hjulpet deg å se hva du trenger, og hva du trygt kan drite i. Da blir alt like viktig, og alt nytt ser bedre ut enn det du holder på med.",
+        "De fleste strategier virker hvis du holder ut lenge nok. Du trenger ikke enda en strategi. Du trenger å slutte å bytte strategi hver tredje uke."
+      ],
+      koster: "Du starter på nytt igjen og igjen, og hver gang mister du det du hadde bygget. Du rekker aldri å se hva som ville fungert.",
+      droppe: [
+        ["Den nye plattformen alle snakker om", "Den du har, holder lenge nok til å finne ut av det."],
+        ["Å måle resultater etter to uker", "Gi det 90 dager før du bestemmer deg."],
+        ["Alle nye ideer akkurat nå", "Skriv dem på en senere-liste. De forsvinner ikke."]
+      ],
+      plan: [
+        ["Uke 1", "Skriv én plan for de neste 90 dagene. Én plattform, ett tilbud, én kanal."],
+        ["Uke 2", "Lag en senere-liste for alle nye ideer, og lov deg selv å ikke røre den før 90 dager har gått."],
+        ["Uke 3 og 4", "Gjør det samme hver uke, og noter hva som skjer. Kjedelig er bra her."]
+      ]
+    }
+  };
+
+  var PLATTFORMER = {
+    skool: {
+      navn: "Skool",
+      hvorfor: "Du vil bygge noe med mennesker i sentrum, og du vil bruke minst mulig tid på oppsett. Skool gir deg community, kurs og kalender på ett sted, og det er satt opp på en ettermiddag. Du trenger ikke nettside og ti verktøy rundt for å komme i gang.",
+      steg: [
+        ["Lag communityet og gi det et navn folk forstår", "Skriv hvem det er for og hva de får hjelp med, rett i navnet eller undertittelen."],
+        ["Skriv About-siden", "Tre korte avsnitt holder: hvem det er for, hva de får, og hva det koster. Legg inn et bilde eller en kort video av deg."],
+        ["Legg én enkel ting i Classroom", "En velkomstvideo og én leksjon som løser et lite problem. Du trenger ikke et helt kurs for å åpne dørene."]
+      ]
+    },
+    kajabi: {
+      navn: "Kajabi",
+      hvorfor: "Du har allerede noe å samle: en side, en liste og et produkt. Da gir det mening å ha alt på ett sted, og Kajabi er kraftig. Det er også dyrere, så sørg for at du bruker det du betaler for.",
+      steg: [
+        ["Start med ett produkt og ett tilbud", "Du trenger ikke fem kurs før du har solgt det første."],
+        ["Lag én landingsside med ett skjema", "Koble skjemaet til en kort velkomstmail. Det er hele funnelen du trenger i starten."],
+        ["Sett av en fast dag i uka", "Sjekk salg, nye kontakter og hva som ikke virker. Tjue minutter holder."]
+      ]
+    },
+    enkel: {
+      navn: "MailerLite og Stripe",
+      hvorfor: "Du trenger ikke en stor plattform ennå. Med MailerLite får du email-listen og siden din samlet på ett sted, gratis. Legg til en betalingslink fra Stripe, så holder det lenge når du selger timer eller ditt første produkt.",
+      steg: [
+        ["Lag en gratis konto i MailerLite", "Der får du email-listen og siden din på ett sted. Ett verktøy, én innlogging."],
+        ["Bygg siden din i MailerLite", "Si hvem du hjelper, hva du tilbyr og hvordan man kjøper. Legg inn et skjema koblet til én velkomstmail."],
+        ["Lag en betalingslink i Stripe", "Du trenger ingen nettbutikk. Legg linken på siden din, eller send den i en DM eller på email."]
+      ]
+    }
+  };
+
+  var FASER = [
+    ["Du har ikke startet ennå", "Og det er en fordel. Du kan bygge enkelt fra dag én, uten å rydde opp i noe."],
+    ["Du har holdt på under ett år", "Nå legges vanene. Det du velger å droppe nå, slipper du å rydde opp i senere."],
+    ["Du har holdt på ett til to år", "Du vet at du har noe verdifullt. Nå handler det om å få businessen rundt det til å fungere."],
+    ["Du har holdt på i mer enn to år", "Du trenger ikke begynne på nytt. Du trenger å rydde, sånn at det du har bygget kan jobbe for deg."]
+  ];
+  var TIMER_UKE = [0.5, 2, 4.5, 8];
+  var KR_MND = [0, 300, 1000, 2000];
+
+  var q = new URLSearchParams(location.search);
+  var f = q.get("f"), p = q.get("p");
+  var main = document.getElementById("innhold");
+
+  function el(tag, cls, tekst) { var e = document.createElement(tag); if (cls) e.className = cls; if (tekst !== undefined) e.textContent = tekst; return e; }
+  function tall(n) { return Math.round(n).toLocaleString("nb-NO"); }
+  function int(k, lo, hi, d) { var v = parseInt(q.get(k), 10); return isNaN(v) ? d : Math.max(lo, Math.min(hi, v)); }
+
+  if (!FELLER[f] || !PLATTFORMER[p]) {
+    main.innerHTML = '<section class="tom"><div class="ramme"><p class="etikett">Tech-sjekken</p><h1 style="font-size:clamp(2.2rem,5vw,3.6rem);margin-top:12px">Her mangler det et resultat</h1><p>Ta Tech-sjekken først, så får du din personlige side her.</p><a class="knapp knapp-rosa" href="index.html#quiz">Ta Tech-sjekken</a></div></section>';
+    return;
+  }
+
+  var F = FELLER[f], P = PLATTFORMER[p], F2 = FELLER[q.get("f2")];
+  var navn = (q.get("n") || "").trim().slice(0, 40);
+  var s = int("s", 0, 3, 1), t = int("t", 0, 3, 1), v = int("v", 0, 3, 0), k = int("k", 0, 100, 50);
+  var nivaa = k < 40 ? "Litt rot" : k < 70 ? "Merkbart kaos" : "Fullt kaos";
+
+  document.title = "Tech-sjekken din: " + F.navn + " | Mathilde Junge";
+
+  // 1. Toppen
+  var topp = el("section", "topp"); var r1 = el("div", "ramme"); topp.appendChild(r1);
+  var venstre = el("div");
+  venstre.appendChild(el("p", "etikett", "Tech-sjekken din"));
+  var h1 = el("h1"); h1.appendChild(document.createTextNode((navn ? navn + ", du" : "Du") + " sitter i "));
+  h1.appendChild(el("span", "felle", F.navn)); h1.appendChild(document.createTextNode("."));
+  venstre.appendChild(h1);
+  venstre.appendChild(el("p", "kort", F.kort));
+  var brikker = el("div", "brikker");
+  [["Plattform: ", P.navn], ["Kaosmåler: ", k + " av 100"]].concat(F2 ? [["Litt ", F2.navn + " også"]] : []).forEach(function (b) {
+    var x = el("span", "brikke"); x.appendChild(document.createTextNode(b[0])); x.appendChild(el("b", "", b[1])); brikker.appendChild(x);
+  });
+  venstre.appendChild(brikker);
+  r1.appendChild(venstre);
+  var maaler = el("div", "maaler");
+  maaler.appendChild(el("p", "etikett", "Kaosmåleren din"));
+  var tl = el("p", "tall", String(k)); tl.appendChild(el("small", "", " / 100")); maaler.appendChild(tl);
+  maaler.appendChild(el("p", "nivaa", nivaa));
+  var bar = el("div", "bar"); var fyll = el("span"); bar.appendChild(fyll); maaler.appendChild(bar);
+  var skala = el("div", "skala"); ["Rolig", "Rot", "Kaos"].forEach(function (x) { skala.appendChild(el("span", "", x)); }); maaler.appendChild(skala);
+  maaler.appendChild(el("p", "forklar", "Kaosmåleren er ingen vitenskap. Den er et øyeblikksbilde av svarene dine, og den kan flytte seg fort."));
+  r1.appendChild(maaler);
+  main.appendChild(topp);
+  requestAnimationFrame(function () { requestAnimationFrame(function () { fyll.style.width = k + "%"; }); });
+
+  // 2. Hvor du står
+  var staar = el("section", "staar"); var r2 = el("div", "ramme"); staar.appendChild(r2);
+  var sv = el("div"); sv.appendChild(el("p", "etikett", "Hvor du står")); sv.appendChild(el("h2", "", "Dette er " + F.navn.toLowerCase() + ".")); sv.lastChild.style.marginTop = "12px";
+  r2.appendChild(sv);
+  var tekst = el("div", "tekst"); F.staar.forEach(function (x) { tekst.appendChild(el("p", "", x)); });
+  var fase = el("p", "fase"); fase.appendChild(el("b", "", FASER[s][0] + ". ")); fase.appendChild(document.createTextNode(FASER[s][1])); tekst.appendChild(fase);
+  r2.appendChild(tekst);
+  main.appendChild(staar);
+
+  // 3. Hva det koster deg
+  var timerAar = TIMER_UKE[t] * 46, uker = timerAar / 37.5, krAar = KR_MND[v] * 12;
+  var kost = el("section", "koster"); var r3 = el("div", "ramme"); kost.appendChild(r3);
+  r3.appendChild(el("p", "etikett", "Hva det koster deg"));
+  r3.appendChild(el("h2", "", "Kaos koster. Her er regnestykket ditt."));
+  var rad = el("div", "tallrad");
+  [[tall(timerAar), "timer på tech i løpet av et år"],
+   [uker < 1 ? "under 1" : tall(uker), uker < 1.5 ? "arbeidsuke med full jobb" : "arbeidsuker med full jobb"],
+   [krAar ? "ca. " + tall(krAar) + " kr" : "0 kr", "på verktøy og plattformer i året"]].forEach(function (x) {
+    var d = el("div"); d.appendChild(el("p", "stort", x[0])); d.appendChild(el("p", "hva", x[1])); rad.appendChild(d);
+  });
+  r3.appendChild(rad);
+  r3.appendChild(el("p", "setning", t === 0 ? "Du bruker lite tid på tech, og det er bra. Pass bare på at det ikke er fordi du har lagt det du trenger å få på plass til side. " + F.koster : F.koster));
+  r3.appendChild(el("p", "regnestykke", "Regnestykket bygger på svarene dine: rundt " + String(TIMER_UKE[t]).replace(".", ",") + " timer i uka i 46 arbeidsuker, og en arbeidsuke på 37,5 timer."));
+  main.appendChild(kost);
+
+  // 4. Droppe + plan
+  var to = el("section", "toveis"); var r4 = el("div", "ramme"); to.appendChild(r4);
+  var b1 = el("div", "kort-boks"); b1.appendChild(el("p", "etikett", "Gi deg selv lov")); b1.appendChild(el("h2", "", "Dette kan du trygt droppe"));
+  var dl = el("ul", "droppliste");
+  F.droppe.forEach(function (x) { var li = el("li"); li.appendChild(el("span", "kryss", "✕")); var d = el("div"); d.appendChild(el("span", "ting", x[0])); d.appendChild(el("span", "hvorfor", x[1])); li.appendChild(d); dl.appendChild(li); });
+  b1.appendChild(dl); r4.appendChild(b1);
+  var b2 = el("div", "kort-boks"); b2.appendChild(el("p", "etikett", "Hvis jeg var deg")); b2.appendChild(el("h2", "", "De neste 30 dagene"));
+  var pl = el("ol", "planliste");
+  F.plan.forEach(function (x) { var li = el("li"); li.appendChild(el("span", "naar", x[0])); li.appendChild(el("span", "gjor", x[1])); pl.appendChild(li); });
+  b2.appendChild(pl); r4.appendChild(b2);
+  main.appendChild(to);
+
+  // 5. Plattform
+  var pf = el("section", "plattform"); var r5 = el("div", "ramme"); pf.appendChild(r5);
+  r5.appendChild(el("p", "etikett", "Plattformen som passer deg nå"));
+  var h2p = el("h2"); h2p.appendChild(document.createTextNode("Mitt forslag: ")); h2p.appendChild(el("span", "navn", P.navn)); h2p.style.marginTop = "12px"; r5.appendChild(h2p);
+  r5.appendChild(el("p", "hvorfor", P.hvorfor));
+  var op = el("ol", "oppskrift");
+  P.steg.forEach(function (x) { var li = el("li"); var d = el("div"); d.appendChild(el("b", "", x[0])); d.appendChild(el("span", "", x[1])); li.appendChild(d); op.appendChild(li); });
+  r5.appendChild(op);
+  r5.appendChild(el("p", "ogsaa", "Du trenger ikke den dyreste plattformen fordi guruen din bruker den. Du trenger den enkleste som gjør jobben for deg akkurat nå. Oppskriften er også på vei til innboksen din."));
+  main.appendChild(pf);
+
+  // 6. Tech uten Kaos
+  var tuk = el("section", "tuk");
+  tuk.innerHTML = '<div class="ramme"><figure class="fotoband"><img class="bak" src="bilder/mathilde-kaos.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fram" src="bilder/mathilde-kaos.jpg" alt="Mathilde ved en skjerm full av åpne vinduer, med telefonen mot øret" width="1120" height="1400" loading="lazy"><span class="ai-merke">AI-bilde av meg</span></figure>' +
+    '<div><p class="etikett">Neste steg, hvis du vil</p><h2>Kom deg ut av fella i Tech uten <span class="kaos">Kaos</span>.</h2>' +
+    '<p class="tekst"></p>' +
+    '<ul><li>Tech Timen hver uke, der vi løser det du står fast i</li><li>Hjelp når du står fast, med skjermbilder og uten fagspråk</li><li>Kurs i det du trenger nå, og opptak av alt</li></ul>' +
+    '<div class="knapperad"><a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about">Bli med gratis →</a><span class="pris">Gratis å bli med. Full tilgang 69 dollar i måneden.</span></div></div></div>';
+  tuk.querySelector("p.tekst").textContent = "Du trenger ikke enda et kurs for å komme deg ut av " + F.navn.toLowerCase() + ". Du trenger et sted der du kan spørre om det du står fast i akkurat nå, og få svar fra noen som kjenner plattformen din. Det er det Tech uten Kaos er laget for.";
+  main.appendChild(tuk);
+
+  // 7. Hilsen
+  var hil = el("section", "hilsen"); var r7 = el("div", "ramme"); hil.appendChild(r7);
+  r7.appendChild(el("p", "", "Du er ikke alene om å sitte i " + F.navn.toLowerCase() + ". De fleste flinke gründere jeg møter, har vært der. Det betyr at veien ut finnes, og at den er enklere enn du tror."));
+  r7.appendChild(el("p", "hand", "Klem fra Mathilde 🤗"));
+  var lenker = el("div", "lenker");
+  var a1 = el("a", "knapp knapp-strek", "Ta sjekken på nytt"); a1.href = "index.html#quiz"; lenker.appendChild(a1);
+  var a2 = el("a", "knapp knapp-strek", "Til forsiden"); a2.href = "index.html"; lenker.appendChild(a2);
+  r7.appendChild(lenker);
+  main.appendChild(hil);
+})();
+</script>
+</body>
+</html>

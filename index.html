@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mathilde Junge | Enklere business med AI og tech</title>
+<meta name="description" content="Enklere business med AI og tech. Mathilde Junge hjelper gründere å bygge en online business de forstår, kan styre selv og tjene penger på.">
+<meta property="og:title" content="Mathilde Junge | Enklere business med AI og tech">
+<meta property="og:description" content="Jeg hjelper gründere å bygge en enkel online business de forstår, kan styre selv og tjene penger på.">
+<meta property="og:image" content="https://mathilde-junge.no/bilder/mathilde-kaffe.jpg">
+<meta property="og:url" content="https://mathilde-junge.no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23ff66c4%22/%3E%3Ctext x=%2250%22 y=%2268%22 font-size=%2252%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22%230d0b0c%22%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@500;700&display=swap">
+<style>
+  :root {
+    --rosa: #ff66c4;
+    --rosa-dyp: #d6339b;
+    --rosa-lys: #ffe3f3;
+    --svart: #0d0b0c;
+    --kull: #1c1719;
+    --hvit: #ffffff;
+    --grunn: #fdf8f9;
+    --tekst: #1c1719;
+    --dempet: #6b5d63;
+    --linje: #ecdfe4;
+    --rosegull: #e0a98f;
+    --rosegull-lys: #f3cdb9;
+    --display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+    --brod: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+    --maks: 1180px;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+  body {
+    margin: 0;
+    background: var(--grunn);
+    color: var(--tekst);
+    font-family: var(--brod);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--rosa); outline-offset: 3px; border-radius: 4px; }
+
+  .ramme { width: 100%; max-width: var(--maks); margin: 0 auto; padding-inline: 24px; }
+  @media (max-width: 480px) { .ramme { padding-inline: 18px; } body { font-size: 17px; } }
+
+  h1, h2, h3 { font-family: var(--display); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance; margin: 0; }
+  h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); font-weight: 800; }
+  h3 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  .hand { font-family: var(--hand); font-weight: 700; }
+  .etikett { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rosa-dyp); }
+
+  /* Knapper */
+  .knapp {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--brod); font-weight: 700; font-size: 1rem;
+    padding: 15px 26px; border-radius: 999px; text-decoration: none;
+    border: 2px solid var(--svart); cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .knapp-rosa { background: var(--rosa); color: var(--svart); box-shadow: 4px 4px 0 var(--svart); }
+  .knapp-rosa:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--svart); }
+  .knapp-strek { background: transparent; color: var(--svart); }
+  .knapp-strek:hover { background: var(--svart); color: var(--hvit); }
+  .pil { transition: transform .15s ease; }
+  .knapp:hover .pil { transform: translateX(3px); }
+
+  /* Meny */
+  .meny {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    background: rgba(253,248,249,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--linje);
+  }
+  .meny .ramme { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .logo { font-family: var(--display); font-weight: 800; font-size: 1.3rem; text-decoration: none; letter-spacing: -0.02em; white-space: nowrap; }
+  .logo span { color: var(--rosa-dyp); }
+  .meny nav { display: flex; gap: 28px; font-weight: 600; font-size: 0.97rem; }
+  .meny nav a { text-decoration: none; padding-block: 4px; border-bottom: 2px solid transparent; }
+  .meny nav a:hover { border-color: var(--rosa); }
+  .meny .knapp { padding: 10px 18px; font-size: 0.92rem; box-shadow: 3px 3px 0 var(--svart); }
+  @media (max-width: 900px) { .meny nav { display: none; } }
+  @media (max-width: 420px) { .meny .knapp .lang { display: none; } }
+
+  /* Hero */
+  .hero { padding-block: clamp(40px, 7vw, 88px) clamp(56px, 8vw, 104px); }
+  .hero .ramme { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px clamp(32px, 5vw, 64px); align-items: end; }
+  .hero .ramme > div:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0 clamp(32px, 5vw, 64px); align-items: end; }
+  .hero .ramme > div:first-child > .etikett, .hero .ramme > div:first-child > h1 { grid-column: 1; }
+  .hero .ramme > div:first-child > .ingress, .hero .ramme > div:first-child > .knapperad, .hero .ramme > div:first-child > .smaatekst { grid-column: 2; }
+  .hero .ramme > div:first-child > .ingress { grid-row: 2; align-self: end; margin-top: 0; }
+  .hero .hero-band { grid-column: 1 / -1; margin-top: clamp(28px, 4vw, 48px); }
+  .hero h1 { font-size: clamp(2.5rem, 5.4vw, 4.7rem); font-weight: 800; }
+  .hero h1 .understrek { background: linear-gradient(transparent 62%, var(--rosa) 62%, var(--rosa) 90%, transparent 90%); padding-inline: 2px; }
+  .hero .ingress { font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--dempet); margin-top: 26px; max-width: 34ch; }
+  .hero .ingress strong { color: var(--tekst); font-weight: 600; }
+  .knapperad { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+  .smaatekst { margin-top: 18px; font-size: 0.93rem; color: var(--dempet); }
+  .hero-bilde { position: relative; }
+  .hero-bilde img { width: 100%; height: auto; border-radius: 24px; border: 2px solid var(--svart); }
+  .hero-lapp {
+    position: absolute; left: -28px; bottom: 44px; background: var(--hvit); border: 2px solid var(--svart);
+    border-radius: 18px; padding: 12px 18px; transform: rotate(-4deg); box-shadow: 4px 4px 0 var(--rosa);
+    font-family: var(--hand); font-size: 1.5rem; line-height: 1.1; max-width: 230px;
+  }
+  @media (max-width: 860px) {
+    .hero .ramme, .hero .ramme > div:first-child { grid-template-columns: 1fr; }
+    .hero .ramme > div:first-child > * { grid-column: 1 !important; grid-row: auto !important; }
+    .hero .ramme > div:first-child > .ingress { margin-top: 22px; }
+    .hero-lapp { left: 8px; bottom: 20px; font-size: 1.3rem; }
+  }
+
+  /* AI-merke på bilder */
+  .ai-merke {
+    position: absolute; top: 14px; right: 14px; z-index: 2;
+    background: rgba(13,11,12,.78); color: var(--hvit); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.04em; padding: 5px 10px; border-radius: 999px;
+  }
+  .bildeboks { position: relative; }
+  /* Fotobånd: bredt felt, hele bildet, Mathilde litt på avstand */
+  .fotoband { position: relative; margin: 0; height: clamp(240px, 30vw, 400px); border-radius: 24px; overflow: hidden; border: 2px solid var(--svart); background: var(--kull); display: flex; justify-content: center; }
+  .fotoband .bak { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; filter: blur(26px) saturate(1.1) brightness(.8); transform: scale(1.05); }
+  .fotoband .fram { position: relative; height: 100%; width: auto; max-width: 100%; object-fit: contain; box-shadow: 0 0 60px rgba(0,0,0,.35); }
+  .fotoband .ai-merke { z-index: 3; }
+  .fotoband .hero-lapp { left: 20px; bottom: 20px; z-index: 3; }
+  @media (max-width: 600px) { .fotoband { height: 260px; } }
+  /* Stående bilder: egen bredde, bue på toppen */
+  .bue { position: relative; margin: 0; width: 100%; max-width: 340px; }
+  .bue img { width: 100%; height: auto; border-radius: 50% 50% 18px 18px / 40% 40% 18px 18px; border: 2px solid var(--svart); box-shadow: 6px 6px 0 var(--rosa); }
+  .bue .ai-merke { top: auto; right: auto; bottom: 14px; left: 14px; }
+  .igjen-hode { display: grid; grid-template-columns: 1fr auto; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .igjen-hode .bue { max-width: 300px; }
+  @media (max-width: 760px) { .igjen-hode { grid-template-columns: 1fr; } .igjen-hode .bue { max-width: 260px; } }
+  .quiz-band { grid-column: 1 / -1; margin-bottom: 8px; }
+
+  /* Kjenner du deg igjen */
+  .igjen { padding-block: clamp(64px, 9vw, 120px); background: var(--hvit); border-block: 1px solid var(--linje); }
+  .igjen-topp { max-width: 760px; }
+  .igjen-topp p.hand { font-size: 1.9rem; color: var(--rosa-dyp); margin-bottom: 8px; }
+  .sitater { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+  .sitat {
+    background: var(--grunn); border: 1px solid var(--linje); border-radius: 20px; padding: 28px 26px 24px;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 22px;
+  }
+  .sitat p { font-size: 1.12rem; line-height: 1.5; }
+  .sitat .klokke { font-family: var(--hand); font-size: 1.35rem; color: var(--dempet); }
+  .igjen-tekst { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 56px; align-items: start; }
+  .igjen-tekst p + p { margin-top: 16px; }
+  .igjen-tekst .stor { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.2; letter-spacing: -0.01em; }
+  .igjen-tekst .stor em { font-style: normal; color: var(--rosa-dyp); }
+  @media (max-width: 860px) { .sitater, .igjen-tekst { grid-template-columns: 1fr; } }
+
+  /* Tech uten Kaos */
+  .tuk { background: var(--svart); color: var(--hvit); padding-block: clamp(72px, 10vw, 128px); position: relative; overflow: hidden; }
+  .tuk .etikett { color: var(--rosa); }
+  .tuk-topp { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: end; }
+  .tuk h2 { font-size: clamp(2.4rem, 5.6vw, 4.6rem); margin-top: 14px; }
+  .tuk h2 .kaos { font-family: var(--hand); font-weight: 700; color: var(--rosegull); font-size: 1.2em; letter-spacing: 0; }
+  .tuk-ingress { color: #d9cfd3; font-size: 1.12rem; }
+  .tuk-ingress strong { color: var(--hvit); }
+  .innhold { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #3a3034; border: 1px solid #3a3034; border-radius: 24px; overflow: hidden; margin-top: 56px; }
+  .innhold > div { background: var(--kull); padding: 30px 28px; }
+  .innhold h3 { color: var(--hvit); margin-bottom: 10px; }
+  .innhold h3 .hjerte { color: var(--rosa); }
+  .innhold p { color: #c9bec3; font-size: 1rem; }
+  .moduler { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .moduler .forklar { color: #a99ca2; font-size: 0.95rem; margin-right: 6px; }
+  .modul { border: 1px solid #54464c; color: #eadfe3; border-radius: 999px; padding: 7px 14px; font-size: 0.9rem; }
+  .pris {
+    margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr auto; gap: 24px; align-items: center;
+    border: 2px solid var(--rosegull); border-radius: 24px; padding: 30px 32px;
+    background: linear-gradient(135deg, rgba(224,169,143,.12), rgba(255,102,196,.08));
+  }
+  .pris .nivaa { font-size: 0.8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--rosegull-lys); }
+  .pris .tall { font-family: var(--display); font-weight: 800; font-size: 1.9rem; line-height: 1.1; margin-top: 6px; }
+  .pris .under { color: #c9bec3; font-size: 0.95rem; margin-top: 6px; }
+  .plassholder { background: var(--rosa); color: var(--svart); border-radius: 6px; padding: 0 6px; font-size: .8em; }
+  .tuk .knapp-rosa { box-shadow: 4px 4px 0 var(--rosegull); border-color: var(--rosa); }
+  .tuk .knapp-rosa:hover { box-shadow: 6px 6px 0 var(--rosegull); }
+  .tvil { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 64px; }
+  .tvil h3 { font-family: var(--brod); font-size: 1.08rem; font-weight: 700; color: var(--hvit); margin-bottom: 8px; letter-spacing: 0; }
+  .tvil p { color: #c9bec3; font-size: 0.98rem; }
+  @media (max-width: 900px) {
+    .tuk-topp, .innhold, .tvil { grid-template-columns: 1fr; }
+    .pris { grid-template-columns: 1fr; }
+  }
+
+  /* Manifest */
+  .manifest { padding-block: clamp(72px, 10vw, 128px); background: var(--rosa); color: var(--svart); }
+  .manifest .ramme { max-width: 1000px; }
+  .manifest blockquote { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(1.9rem, 4.2vw, 3.3rem); line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance; }
+  .manifest blockquote em { font-style: normal; background: var(--svart); color: var(--rosa); padding-inline: 8px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .manifest .signatur { font-family: var(--hand); font-size: 2rem; margin-top: 24px; }
+
+  /* Kunder */
+  .kunder { padding-block: clamp(72px, 9vw, 120px); }
+  .kunder-topp { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; }
+  .kunder-topp p.hand { font-size: 1.7rem; color: var(--rosa-dyp); }
+  .uttalelser { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+  .uttalelse { background: var(--hvit); border: 1px solid var(--linje); border-radius: 20px; padding: 30px 28px; display: flex; flex-direction: column; gap: 20px; justify-content: space-between; }
+  .uttalelse p { font-size: 1.08rem; line-height: 1.55; }
+  .uttalelse .anf { font-family: var(--display); font-size: 3rem; line-height: .6; color: var(--rosa); display: block; height: 22px; }
+  .uttalelse .navn { font-weight: 700; font-size: 0.95rem; }
+  .flere { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 28px; color: var(--dempet); font-size: 0.98rem; }
+  .flere span b { color: var(--tekst); font-weight: 600; }
+  @media (max-width: 900px) { .uttalelser { grid-template-columns: 1fr; } }
+
+  /* Quiz */
+  .quiz-seksjon { padding-block: clamp(72px, 9vw, 120px); background: var(--hvit); border-block: 1px solid var(--linje); }
+  .quiz-seksjon .ramme { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(28px, 4vw, 56px) clamp(32px, 5vw, 64px); align-items: start; }
+  .quiz-seksjon .quiz { margin-top: 0; }
+
+  .quiz-seksjon .intro { margin-top: 18px; color: var(--dempet); max-width: 46ch; }
+  .quiz {
+    margin-top: 32px; background: var(--grunn); border: 2px solid var(--svart); border-radius: 24px; padding: clamp(22px, 3vw, 34px);
+    box-shadow: 6px 6px 0 var(--rosa);
+  }
+  .quiz-fremdrift { display: flex; gap: 6px; margin-bottom: 20px; }
+  .quiz-fremdrift span { height: 6px; flex: 1; border-radius: 99px; background: var(--linje); }
+  .quiz-fremdrift span.ferdig { background: var(--rosa); }
+  .quiz-sporsmal { font-family: var(--display); font-weight: 700; font-size: 1.4rem; line-height: 1.2; margin-bottom: 18px; }
+  .svar { display: grid; gap: 10px; }
+  .svar button {
+    text-align: left; font: inherit; font-size: 1rem; font-weight: 500; background: var(--hvit); color: var(--tekst);
+    border: 1.5px solid var(--linje); border-radius: 14px; padding: 14px 18px; cursor: pointer; transition: border-color .15s, background .15s;
+  }
+  .svar button:hover { border-color: var(--rosa); background: var(--rosa-lys); }
+  .resultat h3 { font-size: 1.8rem; margin-block: 6px 12px; }
+  .resultat p + p { margin-top: 12px; }
+  .resultat .neste { margin-top: 22px; padding-top: 20px; border-top: 1px dashed var(--linje); }
+  .epost-rad { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+  .epost-rad input { flex: 1 1 220px; min-width: 0; font: inherit; padding: 13px 16px; border-radius: 999px; border: 1.5px solid var(--svart); background: var(--hvit); }
+  .epost-rad .knapp { padding: 13px 22px; }
+  .quiz-nr { font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--dempet); margin-bottom: 6px; }
+  .port-tekst { color: var(--dempet); margin-bottom: 4px; }
+  .quiz-skjema .knapp:disabled { opacity: .7; cursor: wait; transform: none; }
+  .quiz-skjema { display: grid; gap: 14px; margin-top: 14px; justify-items: start; }
+  .quiz-skjema .epost-rad { margin-top: 0; width: 100%; }
+  .samtykke { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; color: var(--dempet); line-height: 1.45; cursor: pointer; }
+  .samtykke input[type=checkbox] { accent-color: var(--rosa-dyp); width: 18px; height: 18px; margin-top: 2px; flex: none; }
+  .skjult { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .lenkeknapp { background: none; border: 0; font: inherit; font-size: .92rem; color: var(--dempet); text-decoration: underline; cursor: pointer; margin-top: 14px; padding: 0; }
+  .utkast-note { font-size: .85rem; color: var(--dempet); margin-top: 10px; }
+  @media (max-width: 860px) {
+    .quiz-seksjon .ramme { grid-template-columns: 1fr; }
+
+  }
+
+  /* Om */
+  .om { padding-block: clamp(72px, 10vw, 128px); }
+  .om .ramme { display: grid; grid-template-columns: auto 1fr; gap: clamp(36px, 6vw, 80px); align-items: start; }
+  .om-bilder { width: 320px; }
+  .om-bilder .hand { font-size: 1.5rem; margin-top: 18px; text-align: center; color: var(--dempet); }
+  .om-innhold { max-width: 720px; }
+  @media (max-width: 860px) { .om .ramme { grid-template-columns: 1fr; } .om-bilder { width: 100%; max-width: 280px; } }
+  .om h2 { margin-top: 12px; }
+  .reise { font-family: var(--display); font-weight: 700; font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.3; margin-top: 24px; }
+  .reise span { white-space: nowrap; }
+  .reise span:not(:last-child)::after { content: " /"; color: var(--rosa); }
+  .om-tekst { margin-top: 28px; max-width: 62ch; }
+  .om-tekst p + p { margin-top: 18px; }
+  .tidslinje { margin-top: 36px; border-left: 2px solid var(--rosa); padding-left: 24px; display: grid; gap: 18px; max-width: 58ch; }
+  .tidslinje div { position: relative; }
+  .tidslinje div::before { content: ""; position: absolute; left: -32px; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--grunn); border: 2px solid var(--rosa-dyp); }
+  .tidslinje b { font-family: var(--display); font-weight: 700; display: inline-block; min-width: 3.4em; font-variant-numeric: tabular-nums; }
+  .ai-boks {
+    margin-top: 44px; background: var(--hvit); border: 2px dashed var(--rosa-dyp); border-radius: 20px; padding: 26px 28px; max-width: 62ch;
+  }
+  .ai-boks h3 { font-size: 1.3rem; margin-bottom: 10px; }
+  .ai-boks p + p { margin-top: 12px; }
+  .bok { margin-top: 28px; display: flex; gap: 20px; align-items: center; max-width: 62ch; background: var(--svart); color: var(--hvit); border-radius: 20px; padding: 24px 26px; flex-wrap: wrap; }
+  .bok-omslag { width: 72px; height: 100px; border-radius: 4px 10px 10px 4px; background: linear-gradient(160deg, var(--rosegull-lys), var(--rosegull) 60%, #b97c63); display: grid; place-items: center; color: var(--svart); font-family: var(--hand); font-size: 1.1rem; line-height: 1; text-align: center; padding: 6px; flex: none; box-shadow: inset 6px 0 0 rgba(0,0,0,.12); }
+  .bok div:last-child { flex: 1 1 240px; }
+  .bok p { color: #d9cfd3; font-size: 1rem; }
+  .bok h3 { margin-bottom: 6px; }
+
+
+  /* Kontakt */
+  .kontakt { padding-block: clamp(72px, 9vw, 120px); background: var(--rosa-lys); border-top: 1px solid var(--linje); }
+  .kontakt .ramme { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
+  .kontakt .intro p + p { margin-top: 14px; }
+  .kontakt .intro { color: var(--kull); }
+  .kontakt .intro .hand { font-size: 1.6rem; color: var(--rosa-dyp); }
+  form.skjema { background: var(--hvit); border: 2px solid var(--svart); border-radius: 24px; padding: clamp(22px, 3vw, 34px); display: grid; gap: 20px; }
+  fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
+  legend { font-family: var(--display); font-weight: 700; font-size: 1.2rem; margin-bottom: 8px; }
+  .valg { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1.5px solid var(--linje); border-radius: 14px; cursor: pointer; font-size: 1rem; line-height: 1.4; }
+  .valg:hover { border-color: var(--rosa); }
+  .valg input { accent-color: var(--rosa-dyp); margin-top: 3px; width: 18px; height: 18px; flex: none; }
+  .valg:has(input:checked) { border-color: var(--rosa-dyp); background: var(--rosa-lys); }
+  .felt { display: grid; gap: 6px; }
+  .felt label { font-weight: 600; font-size: .95rem; }
+  .felt input, .felt textarea { font: inherit; font-size: 1rem; padding: 12px 14px; border: 1.5px solid var(--linje); border-radius: 12px; background: var(--grunn); width: 100%; }
+  .felt input:focus, .felt textarea:focus { border-color: var(--rosa-dyp); outline: none; }
+  .to-kol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .veiviser { border-radius: 14px; padding: 14px 16px; background: var(--svart); color: var(--hvit); font-size: .98rem; }
+  .veiviser a { color: var(--rosa); font-weight: 700; }
+  @media (max-width: 860px) { .kontakt .ramme, .to-kol { grid-template-columns: 1fr; } }
+
+  /* Bunn */
+  footer { background: var(--svart); color: #c9bec3; padding-block: 56px 40px; font-size: .95rem; }
+  footer .ramme { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  footer .logo { color: var(--hvit); font-size: 1.5rem; }
+  footer .logo span { color: var(--rosa); }
+  footer h4 { font-family: var(--brod); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--hvit); margin: 0 0 12px; }
+  footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--rosa); }
+  .bunnlinje { margin-top: 44px; padding-top: 22px; border-top: 1px solid #332a2e; grid-column: 1 / -1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .88rem; color: #9a8c92; }
+  @media (max-width: 760px) { footer .ramme { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="meny">
+  <div class="ramme">
+    <a class="logo" href="#topp">Mathilde Junge<span>.</span></a>
+    <nav aria-label="Hovedmeny">
+      <a href="#tech-uten-kaos">Tech uten Kaos</a>
+      <a href="#quiz">Tech-sjekken</a>
+      <a href="#om">Om Mathilde</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about" target="_blank" rel="noopener">Bli med<span class="lang">&nbsp;i Tech uten Kaos</span></a>
+  </div>
+</header>
+
+<main id="topp">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="ramme">
+      <div>
+        <p class="etikett">Tech, AI og online business for gründere</p>
+        <h1 style="margin-top:18px">Du trenger ikke bli teknisk. Du trenger å <span class="understrek">forstå din egen business.</span></h1>
+        <p class="ingress">Jeg hjelper deg som vil tjene penger på kunnskapen din med å bygge en <strong>enkel online business du forstår, kan styre selv og tjener penger på.</strong> Uten å drukne i tech, AI og alt du tror du må kunne.</p>
+        <div class="knapperad">
+          <a class="knapp knapp-rosa" href="#tech-uten-kaos">Se hva Tech uten Kaos er <span class="pil" aria-hidden="true">→</span></a>
+          <a class="knapp knapp-strek" href="#quiz">Ta den gratis Tech-sjekken</a>
+        </div>
+        <p class="smaatekst">Gratis å bli med i communityet. Ingen dumme spørsmål, bare spørsmål du ikke har fått svar på ennå.</p>
+      </div>
+<figure class="fotoband hero-band">
+        <img class="bak" src="bilder/mathilde-notatbok.jpg" alt="" aria-hidden="true">
+        <img class="fram" src="bilder/mathilde-notatbok.jpg" alt="Mathilde sitter ved et bord med notatbok og laptop og smiler til kamera" width="1400" height="933">
+        <span class="ai-merke">AI-bilde av meg</span>
+        <p class="hero-lapp">Dette fikser vi ♡</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- KJENNER DU DEG IGJEN -->
+  <section class="igjen" aria-labelledby="igjen-tittel">
+    <div class="ramme">
+      <div class="igjen-hode">
+        <div class="igjen-topp">
+          <p class="hand">Kjenner du deg igjen?</p>
+          <h2 id="igjen-tittel">Du startet business for å hjelpe folk. Plutselig handler dagene om faner, funnels og feilmeldinger.</h2>
+        </div>
+        <figure class="bue">
+          <img src="bilder/mathilde-kaos.jpg" alt="Mathilde sitter ved en skjerm full av åpne vinduer og gule lapper, med telefonen mot øret" width="1120" height="1400" loading="lazy">
+          <span class="ai-merke">AI-bilde av meg</span>
+        </figure>
+      </div>
+      <div class="sitater">
+        <figure class="sitat" style="margin:0">
+          <p>«Jeg skulle bare lage et enkelt kurs. Hvordan endte jeg opp med 48 faner åpne og en YouTube-video om funnels klokka elleve om kvelden?»</p>
+          <figcaption class="klokke">kl. 23.07</figcaption>
+        </figure>
+        <figure class="sitat" style="margin:0">
+          <p>«Jeg har kjøpt kurs. Jeg har sett videoer. Jeg har lagret 700 innlegg. Og jeg aner fortsatt ikke hva neste steg er.»</p>
+          <figcaption class="klokke">kl. 01.12</figcaption>
+        </figure>
+        <figure class="sitat" style="margin:0">
+          <p>«Jeg kan ikke fortsette å bruke penger på folk hver gang noe skal kobles sammen.»</p>
+          <figcaption class="klokke">kl. 03.00</figcaption>
+        </figure>
+      </div>
+      <div class="igjen-tekst">
+        <p class="stor">Du er flink på det du driver med. Det er businessen <em>rundt</em> fagkompetansen som har blitt unødvendig komplisert.</p>
+        <div>
+          <p>Skool eller Kajabi. MailerLite, ManyChat, AI, automatisering. Du finner 17 svar på det samme spørsmålet, og sitter igjen med mer rot enn da du startet.</p>
+          <p>Du mangler ikke disiplin, og du er ikke «for lite teknisk». Tech blir bare forklart av folk som har glemt hvordan det er å være ny.</p>
+          <p><strong>Det er her jeg kommer inn.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH UTEN KAOS -->
+  <section class="tuk" id="tech-uten-kaos" aria-labelledby="tuk-tittel">
+    <div class="ramme">
+      <div class="tuk-topp">
+        <div>
+          <p class="etikett">Communityet mitt på Skool</p>
+          <h2 id="tuk-tittel">Tech uten <span class="kaos">Kaos</span>. Her bygger vi enklere.</h2>
+        </div>
+        <p class="tuk-ingress">Du trenger ikke enda et kurs du aldri blir ferdig med. Du trenger et sted der du kan komme som du er, spørre om det du står fast i <strong>akkurat nå</strong>, og få hjelp til å komme videre.</p>
+      </div>
+
+      <div class="innhold">
+        <div>
+          <h3><span class="hjerte">♡</span> Tech Timen hver uke</h3>
+          <p>Live sending der vi går gjennom de tekniske utfordringene dine. Kommer du ikke, ligger opptaket klart.</p>
+        </div>
+        <div>
+          <h3><span class="hjerte">♡</span> Hjelp når du står fast</h3>
+          <p>Legg ut spørsmålet i communityet, så finner vi ut av det sammen. Med skjermbilder, ikke fagspråk.</p>
+        </div>
+        <div>
+          <h3><span class="hjerte">♡</span> AI som jobber for deg</h3>
+          <p>Lær å bruke AI sånn at du sparer tid og fortsatt høres ut som deg, ikke som alle andre.</p>
+        </div>
+      </div>
+
+      <div class="moduler" aria-label="Eksempler på kurs i classroom">
+        <span class="forklar">I classroom nå:</span>
+        <span class="modul">Bygg din plattform</span>
+        <span class="modul">Claude som SoMe-maskin</span>
+        <span class="modul">Voks med AI</span>
+        <span class="modul">Kundekompasset</span>
+        <span class="modul">Canva minikurs</span>
+        <span class="modul">Planlegg og sett mål du når</span>
+        <span class="modul">+ flere</span>
+      </div>
+
+      <div class="pris">
+        <div>
+          <p class="nivaa">Gratis medlem</p>
+          <p class="tall">0 kr</p>
+          <p class="under">Kom inn, se deg rundt og ta modulen om hvordan du bygger opp Skool.</p>
+        </div>
+        <div>
+          <p class="nivaa">Full tilgang</p>
+          <p class="tall">69 dollar / mnd</p>
+          <p class="under">Tech Timen, alle kursene, opptakene og hjelp når du står fast. Prisen du kommer inn på, beholder du.</p>
+        </div>
+        <a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about" target="_blank" rel="noopener">Bli med gratis <span class="pil" aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="tvil">
+        <div>
+          <h3>«Jeg har allerede brukt så mye penger på kurs.»</h3>
+          <p>Nettopp derfor får du ikke et gigantisk kursbibliotek her. Du får hjelp til å bruke det du allerede vet, og til det du står fast i nå.</p>
+        </div>
+        <div>
+          <h3>«Jeg har ikke tid til enda et community.»</h3>
+          <p>Du trenger ikke se alt. Kom på Tech Timen når det passer, spør når du står fast, og lukk Mac-en klokka fire.</p>
+        </div>
+        <div>
+          <h3>«Er dette bare for nybegynnere?»</h3>
+          <p>Nei. Du lærer ikke å lage en Instagram-konto her. Du får hjelp med det som stopper businessen din i dag, uansett hvor langt du har kommet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFEST -->
+  <section class="manifest" aria-label="Det jeg tror på">
+    <div class="ramme">
+      <blockquote>Jeg tror ikke du trenger å bli flinkere til å tåle businessen din. Jeg tror du trenger å bygge <em>en business du tåler.</em></blockquote>
+      <p class="signatur">Mathilde ♡</p>
+    </div>
+  </section>
+
+  <!-- KUNDER -->
+  <section class="kunder" aria-labelledby="kunder-tittel">
+    <div class="ramme">
+      <div class="kunder-topp">
+        <div>
+          <p class="hand">«Det fikser jeg»</p>
+          <h2 id="kunder-tittel">Det kundene mine sier</h2>
+        </div>
+      </div>
+      <div class="uttalelser">
+        <figure class="uttalelse" style="margin:0">
+          <div><span class="anf" aria-hidden="true">“</span><p>Når Mathilde tok seg av teknikken, kunne jeg endelig senke skuldrene og fokusere på det jeg virkelig brenner for. Jeg hadde aldri klart å vokse så raskt uten henne.</p></div>
+          <figcaption class="navn">Mariann Eikelia</figcaption>
+        </figure>
+        <figure class="uttalelse" style="margin:0">
+          <div><span class="anf" aria-hidden="true">“</span><p>Sto teknisk sett på bar bakke, det føltes overveldende. Mathilde lagde pedagogiske og lette videoer som gjør det enkelt for meg å lære og utføre ting selv.</p></div>
+          <figcaption class="navn">Mette Danielsen</figcaption>
+        </figure>
+        <figure class="uttalelse" style="margin:0">
+          <div><span class="anf" aria-hidden="true">“</span><p>Jeg fikk fnatt av å sette meg inn i nytt system, kontaktet Mathilde, og på et vipps hadde hun fikset det. Min tekniske hånd å holde i.</p></div>
+          <figcaption class="navn">Coach Ingvild</figcaption>
+        </figure>
+      </div>
+      <div class="flere">
+        <span><b>Nina, FinStrek:</b> «Hjelpen din var make or break for at jeg kom i gang.»</span>
+        <span><b>Mayka:</b> «Hun gjør teknikk sexy (jepp, det går an).»</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz-seksjon" id="quiz" aria-labelledby="quiz-tittel">
+    <div class="ramme">
+      <figure class="fotoband quiz-band">
+        <img class="bak" src="bilder/mathilde-terrasse.jpg" alt="" aria-hidden="true" loading="lazy">
+        <img class="fram" src="bilder/mathilde-terrasse.jpg" alt="Mathilde sitter avslappet på en terrasse med havet i bakgrunnen" width="1400" height="788" loading="lazy">
+        <span class="ai-merke">AI-bilde av meg</span>
+      </figure>
+      <div class="quiz-tekst">
+        <p class="etikett">Gratis Tech-sjekk, tar tre minutter</p>
+        <h2 id="quiz-tittel" style="margin-top:12px">Hvor sitter du fast?</h2>
+        <p class="intro">Svar på ni korte spørsmål, så får du din personlige Tech-sjekk: fella du sitter i, hvor mye den koster deg i timer og kroner, hva du trygt kan droppe, og hvilken plattform som passer deg akkurat nå.</p>
+      </div>
+      <div>
+        <div class="quiz" id="quizboks" aria-live="polite">
+          <div class="quiz-fremdrift" aria-hidden="true"></div>
+          <div id="quizinnhold"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OM -->
+  <section class="om" id="om" aria-labelledby="om-tittel">
+    <div class="ramme">
+      <div class="om-bilder">
+        <figure class="bue">
+          <img src="bilder/mathilde-vegg.jpg" alt="Mathilde står lent mot en terrakottafarget vegg i jeans og svart t-skjorte" width="1120" height="1400" loading="lazy">
+          <span class="ai-merke">AI-bilde av meg</span>
+        </figure>
+        <p class="hand">Samme kvinne, større muligheter ♡</p>
+      </div>
+      <div class="om-innhold">
+        <p class="etikett">Om Mathilde</p>
+        <h2 id="om-tittel">Jeg lærer ikke dette bort fra en lærebok.</h2>
+        <p class="reise"><span>Junkie</span> <span>Butikkeier</span> <span>Kjøpmann på Rema</span> <span>Ufør</span> <span>Gründer online</span></p>
+        <div class="om-tekst">
+          <p>Jeg har bygget meg selv opp igjen fra bunnen mer enn én gang. Jeg maste meg til en gratis praksisplass i en dyrebutikk, og fire måneder senere eide jeg hele butikken. Mitt eget AS, fra ingenting.</p>
+          <p>Senere ble jeg kjøpmann på Rema 1000. Jeg gapte over for mye, møtte veggen og ble ufør i 2019. Veien tilbake ble ikke sånn jeg hadde sett for meg.</p>
+          <p>Så begynte jeg online, som VA og Kajabi-spesialist. Jeg ble hun andre gründere ringte når systemene ikke snakket sammen, og har siden jobbet med noen av Norges største onlinegründere. Etter hvert skjønte jeg at problemet var større enn tech. Flinke folk brukte tid og penger på systemer de ikke forsto.</p>
+          <p>Det er derfor jeg bygger Tech uten Kaos. Målet mitt er ikke at du skal trenge meg for alltid. Målet er at du forstår din egen business.</p>
+        </div>
+        <div class="tidslinje" aria-label="Tidslinje">
+          <div><b>2007</b> Overtar dyrebutikken, mitt første AS</div>
+          <div><b>2016</b> Kjøpmann på Rema 1000, etter Remas kjøpmannsskole</div>
+          <div><b>2019</b> Ufør, og en lang vei videre</div>
+          <div><b>2023</b> VA og Kajabi-spesialist for norske onlinegründere</div>
+          <div><b>I dag</b> Mathilde Junge AS og Tech uten Kaos</div>
+        </div>
+
+        <div class="ai-boks">
+          <h3>Ja, bildene er AI.</h3>
+          <p>Alle bildene av meg på denne siden er laget med AI, med meg selv som modell. Jeg brukte tre år på å ikke tørre å vise ansiktet mitt, etter at en «coach» sa jeg burde bruke filter hvis jeg noen gang skulle få solgt noe på nett.</p>
+          <p>Da jeg fant en måte å lage min egen AI-tvilling på, hoppet jeg rett på det. Ikke for å gjemme meg. Fordi jeg endelig fikk velge selv. Og det er budskapet som er viktig her, ikke bildet 🤗</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="kontakt" id="kontakt" aria-labelledby="kontakt-tittel">
+    <div class="ramme">
+      <div class="intro">
+        <p class="hand">Si hei</p>
+        <h2 id="kontakt-tittel" style="margin-block:8px 18px">Hva trenger du hjelp med?</h2>
+        <p>De fleste spørsmål får du raskest svar på inne i Tech uten Kaos. Der svarer jeg, og du får hjelp av andre gründere som har stått i det samme.</p>
+        <p>Ved siden av communityet tar jeg noen få større prosjekter og samarbeid. Fortell meg hva du trenger, så svarer jeg deg på email.</p>
+      </div>
+      <form class="skjema" id="kontaktskjema" action="https://www.mathildejunge.no/forms/2149727223/form_submissions" method="post" accept-charset="UTF-8">
+        <input name="utf8" type="hidden" value="&#x2713;">
+        <fieldset>
+          <legend>Jeg vil…</legend>
+          <label class="valg"><input type="radio" name="form_submission[custom_8]" id="behov-laere" value="Lære å gjøre tech selv" required> lære å gjøre tech selv</label>
+          <label class="valg"><input type="radio" name="form_submission[custom_8]" id="behov-fast" value="Står fast i noe konkret"> få hjelp med noe konkret jeg står fast i</label>
+          <label class="valg"><input type="radio" name="form_submission[custom_8]" id="behov-prosjekt" value="Større oppsett eller prosjekt"> ha hjelp med et større oppsett eller prosjekt</label>
+          <label class="valg"><input type="radio" name="form_submission[custom_8]" id="behov-samarbeid" value="Samarbeid om noe annet"> samarbeide med deg om noe annet</label>
+        </fieldset>
+        <p class="veiviser" id="veiviser" hidden>Det er akkurat det Tech uten Kaos er laget for. <a href="https://www.skool.com/mathilde/about" target="_blank" rel="noopener">Bli med gratis her →</a></p>
+        <div class="to-kol">
+          <div class="felt"><label for="navn">Navn</label><input id="navn" name="form_submission[name]" autocomplete="name" required></div>
+          <div class="felt"><label for="epost">Email</label><input id="epost" name="form_submission[email]" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="felt"><label for="melding">Fortell kort hva det gjelder</label><textarea id="melding" name="form_submission[custom_9]" rows="4"></textarea></div>
+        <div>
+          <button class="knapp knapp-rosa" type="submit">Send til Mathilde <span class="pil" aria-hidden="true">→</span></button>
+          <p class="utkast-note">Jeg svarer deg på email.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="ramme">
+    <div>
+      <a class="logo" href="#topp">Mathilde Junge<span>.</span></a>
+      <p style="margin-top:12px; max-width:36ch">Enklere business med AI og tech. Forklart sånn at du skjønner det, og kan fikse det selv neste gang.</p>
+    </div>
+    <div>
+      <h4>Snarveier</h4>
+      <ul>
+        <li><a href="#tech-uten-kaos">Tech uten Kaos</a></li>
+        <li><a href="#quiz">Tech-sjekken</a></li>
+        <li><a href="#om">Om Mathilde</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Finn meg</h4>
+      <ul>
+        <li><a href="https://www.skool.com/mathilde/about" target="_blank" rel="noopener">Skool</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#kontakt">Send meg en melding</a></li>
+      </ul>
+    </div>
+    <div class="bunnlinje">
+      <span>© 2026 Mathilde Junge AS · Org.nr. 934 428 374</span>
+      <span>Alle bilder av Mathilde er AI-genererte, med henne selv som modell.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Tech-sjekken: 9 spørsmål som gir fella (f), plattform (p), fase (s), tid (t) og verktøykost (v)
+  var sporsmal = [
+    { q: "Hvor lenge har du holdt på med businessen din?", a: [
+      ["Jeg har ikke startet ennå", { s: 0, p: { enkel: 1, skool: 1 } }],
+      ["Under ett år", { s: 1 }],
+      ["Ett til to år", { s: 2 }],
+      ["Mer enn to år", { s: 3, p: { kajabi: 1 } }]
+    ]},
+    { q: "Hva selger du, eller vil selge først?", a: [
+      ["Et community eller medlemskap", { p: { skool: 3 } }],
+      ["Et kurs eller et digitalt produkt", { p: { kajabi: 2, enkel: 1 } }],
+      ["Timer, behandlinger eller 1:1", { p: { enkel: 3 } }],
+      ["Jeg vet ikke helt ennå", { p: { enkel: 2, skool: 1 } }]
+    ]},
+    { q: "Når noe teknisk stopper deg, hva gjør du oftest?", a: [
+      ["Googler og ser YouTube til langt på kveld", { f: { fane: 3 } }],
+      ["Sender det til noen som kan fikse det for meg", { f: { avhengig: 3 } }],
+      ["Kjøper et kurs eller en mal som skal løse det", { f: { kurs: 3 } }],
+      ["Legger det bort og prøver noe helt annet", { f: { hopp: 3 } }]
+    ]},
+    { q: "Hvor mange kurs har du kjøpt det siste året, som du ikke har fullført?", a: [
+      ["Ingen", {}],
+      ["Ett eller to", { f: { kurs: 1 } }],
+      ["Tre til fem", { f: { kurs: 2 } }],
+      ["Jeg har sluttet å telle 😅", { f: { kurs: 3 } }]
+    ]},
+    { q: "Hvor mange ganger har du byttet plattform, funnel eller strategi det siste året?", a: [
+      ["Ingen", {}],
+      ["Én gang", { f: { hopp: 1 } }],
+      ["To eller tre ganger", { f: { hopp: 2 } }],
+      ["Jeg mister tellingen", { f: { hopp: 3 } }]
+    ]},
+    { q: "Hvilken setning høres mest ut som deg?", a: [
+      ["Jeg ser hva de store gjør, og tenker at jeg må ha det samme", { f: { kopi: 3 }, sist: "kopi" }],
+      ["Jeg har altfor mange faner åpne akkurat nå", { f: { fane: 2 }, sist: "fane" }],
+      ["Jeg venter på at noen skal ha tid til å fikse noe for meg", { f: { avhengig: 2 }, sist: "avhengig" }],
+      ["Jeg har en ny plan nesten hver mandag", { f: { hopp: 2 }, sist: "hopp" }],
+      ["Jeg har en hel mappe med kurs jeg skal ta", { f: { kurs: 2 }, sist: "kurs" }]
+    ]},
+    { q: "Hvor mye tid går til tech i en vanlig uke?", a: [
+      ["Under én time", { t: 0 }],
+      ["En til tre timer", { t: 1 }],
+      ["Tre til seks timer", { t: 2, f: { fane: 1 } }],
+      ["Mer enn seks timer", { t: 3, f: { fane: 1 } }]
+    ]},
+    { q: "Hva har du på plass i dag?", a: [
+      ["Ingenting ennå", { p: { enkel: 2, skool: 1 } }],
+      ["Bare sosiale medier", { p: { enkel: 2, skool: 1 } }],
+      ["Nettside, men ingen email-liste", { p: { enkel: 2 } }],
+      ["Nettside, email-liste og minst ett produkt", { p: { kajabi: 3 } }]
+    ]},
+    { q: "Hva betaler du for verktøy og plattformer i måneden, omtrent?", a: [
+      ["Ingenting", { v: 0 }],
+      ["Under 500 kr", { v: 1 }],
+      ["500 til 1500 kr", { v: 2, f: { kopi: 1 } }],
+      ["Over 1500 kr", { v: 3, f: { kopi: 2 }, p: { kajabi: 1 } }]
+    ]}
+  ];
+  var MAKS = { kurs: 8, kopi: 5, avhengig: 5, fane: 6, hopp: 8 };
+  var FELLENAVN = { kurs: "Kursfella", kopi: "Kopifella", avhengig: "Knappefella", fane: "Fanefella", hopp: "Hoppefella" };
+  var PLATTFORMNAVN = { skool: "Skool", kajabi: "Kajabi", enkel: "Et enkelt oppsett" };
+
+  var boks = document.getElementById("quizinnhold");
+  var fremdrift = document.querySelector(".quiz-fremdrift");
+  var steg, felle, plattform, info;
+
+  function nullstill() {
+    steg = 0;
+    felle = { kurs: 0, kopi: 0, avhengig: 0, fane: 0, hopp: 0 };
+    plattform = { skool: 0, kajabi: 0, enkel: 0 };
+    info = { s: 1, t: 1, v: 1, sist: "fane" };
+  }
+  function tegnFremdrift() {
+    fremdrift.innerHTML = "";
+    for (var i = 0; i < sporsmal.length + 1; i++) {
+      var sp = document.createElement("span"); if (i < steg) sp.className = "ferdig"; fremdrift.appendChild(sp);
+    }
+  }
+  function visSporsmal() {
+    tegnFremdrift();
+    var s = sporsmal[steg];
+    boks.innerHTML = "";
+    var nr = document.createElement("p"); nr.className = "quiz-nr"; nr.textContent = "Spørsmål " + (steg + 1) + " av " + sporsmal.length; boks.appendChild(nr);
+    var h = document.createElement("p"); h.className = "quiz-sporsmal"; h.textContent = s.q; boks.appendChild(h);
+    var liste = document.createElement("div"); liste.className = "svar";
+    s.a.forEach(function (svar) {
+      var b = document.createElement("button"); b.type = "button"; b.textContent = svar[0];
+      b.addEventListener("click", function () {
+        var d = svar[1];
+        if (d.f) Object.keys(d.f).forEach(function (k) { felle[k] += d.f[k]; });
+        if (d.p) Object.keys(d.p).forEach(function (k) { plattform[k] += d.p[k]; });
+        ["s", "t", "v", "sist"].forEach(function (k) { if (d[k] !== undefined) info[k] = d[k]; });
+        steg++;
+        steg < sporsmal.length ? visSporsmal() : visPort();
+      });
+      liste.appendChild(b);
+    });
+    boks.appendChild(liste);
+    if (steg > 0) { var f = liste.querySelector("button"); if (f) f.focus({ preventScroll: true }); }
+  }
+  function regnUt() {
+    var rangert = Object.keys(felle).map(function (k) { return [k, felle[k] / MAKS[k]]; })
+      .sort(function (a, b) { return (b[1] - a[1]) || ((b[0] === info.sist) - (a[0] === info.sist)); });
+    var p = Object.keys(plattform).sort(function (a, b) { return (plattform[b] - plattform[a]) || ((b === "enkel") - (a === "enkel")); })[0];
+    var k = Math.round(15 + rangert[0][1] * 45 + rangert[1][1] * 15 + info.t * 7 + info.v * 2);
+    k = Math.max(12, Math.min(96, k));
+    return { f: rangert[0][0], f2: rangert[1][1] > 0.25 ? rangert[1][0] : "", p: p, k: k };
+  }
+  function visPort() {
+    steg = sporsmal.length; tegnFremdrift();
+    var r = regnUt();
+    var params = new URLSearchParams({ f: r.f, f2: r.f2, p: r.p, s: info.s, t: info.t, v: info.v, k: r.k });
+    boks.innerHTML =
+      '<div class="port">' +
+      '<p class="etikett">Resultatet ditt er klart</p>' +
+      '<p class="quiz-sporsmal" style="margin-top:6px">Hvor skal jeg sende det?</p>' +
+      '<p class="port-tekst">Du får den personlige Tech-sjekken din med en gang: fella du sitter i, hva den koster deg, hva du trygt kan droppe og plattformen som passer deg nå. Oppskriften for å komme i gang kommer på email.</p>' +
+      '<iframe name="kajabi-ramme" title="Påmelding" style="display:none"></iframe>' +
+      '<form class="quiz-skjema" id="portskjema" action="https://www.mathildejunge.no/forms/2149727222/form_submissions" method="post" accept-charset="UTF-8" target="kajabi-ramme">' +
+      '<input name="utf8" type="hidden" value="&#x2713;">' +
+      '<input type="hidden" name="form_submission[custom_7]" id="quiz-plattform">' +
+      '<input type="hidden" name="form_submission[custom_10]" id="quiz-felle">' +
+      '<input type="hidden" name="form_submission[custom_11]" id="quiz-lenke">' +
+      '<div class="epost-rad">' +
+      '<label for="quiz-navn" class="skjult">Fornavn</label><input id="quiz-navn" name="form_submission[name]" placeholder="Fornavn" autocomplete="given-name" required>' +
+      '<label for="quiz-epost" class="skjult">Email</label><input id="quiz-epost" name="form_submission[email]" type="email" placeholder="din@email.no" autocomplete="email" required>' +
+      '</div>' +
+      '<label class="samtykke"><input type="hidden" name="form_submission[custom_6]" value="0"><input type="checkbox" name="form_submission[custom_6]" value="1" required> Ja, send meg resultatet, og jeg skjønner at jeg havner på email-listen til Mathilde. Du kan melde deg av når som helst.</label>' +
+      '<button class="knapp knapp-rosa" type="submit" id="portknapp">Vis meg resultatet <span class="pil" aria-hidden="true">→</span></button>' +
+      '</form>' +
+      '<button type="button" class="lenkeknapp" id="quizigjen">Ta sjekken på nytt</button>' +
+      '</div>';
+    document.getElementById("quiz-plattform").value = PLATTFORMNAVN[r.p];
+    document.getElementById("quiz-felle").value = FELLENAVN[r.f];
+    var skjema = document.getElementById("portskjema");
+    var sendt = false;
+    function gaaVidere() {
+      if (sendt) return; sendt = true;
+      window.location.href = "resultat.html?" + params.toString();
+    }
+    skjema.addEventListener("submit", function () {
+      params.set("n", document.getElementById("quiz-navn").value.trim().split(" ")[0]);
+      document.getElementById("quiz-lenke").value = "https://mathilde-junge.no/resultat.html?" + params.toString();
+      var knapp = document.getElementById("portknapp"); knapp.disabled = true; knapp.firstChild.textContent = "Lager resultatet ditt ";
+      document.querySelector('iframe[name="kajabi-ramme"]').addEventListener("load", gaaVidere);
+      setTimeout(gaaVidere, 2500);
+    });
+    document.getElementById("quizigjen").addEventListener("click", function () { nullstill(); visSporsmal(); });
+    document.getElementById("quiz-navn").focus({ preventScroll: true });
+  }
+  nullstill();
+  visSporsmal();
+
+  // Kontaktskjema: send de som vil lære til communityet
+  var veiviser = document.getElementById("veiviser");
+  document.querySelectorAll('input[name="form_submission[custom_8]"]').forEach(function (r) {
+    r.addEventListener("change", function () {
+      veiviser.hidden = !(r.checked && (r.id === "behov-laere" || r.id === "behov-fast"));
+    });
+  });
+})();
+</script>
+</body>
+</html>
