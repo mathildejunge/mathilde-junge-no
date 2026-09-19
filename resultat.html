@@ -45,7 +45,7 @@
   .meny .ramme { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
   .logo { font-family: var(--display); font-weight: 800; font-size: 1.3rem; text-decoration: none; letter-spacing: -0.02em; white-space: nowrap; }
   .logo span { color: var(--rosa-dyp); }
-  .meny .knapp { padding: 10px 18px; font-size: 0.92rem; box-shadow: 3px 3px 0 var(--svart); }
+  .meny .knapp { padding: 10px 18px; font-size: 0.92rem; box-shadow: 3px 3px 0 var(--svart); gap: 0; }
   @media (max-width: 420px) { .meny .knapp .lang { display: none; } }
 
   section { padding-block: clamp(56px, 8vw, 96px); }
@@ -120,7 +120,10 @@
 
   /* TUK */
   .tuk { background: var(--svart); color: var(--hvit); }
-  .tuk .ramme { display: grid; grid-template-columns: 1fr; gap: clamp(28px, 4vw, 48px); }
+  .tuk .ramme { display: grid; grid-template-columns: auto 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .bue { position: relative; margin: 0; width: 300px; max-width: 100%; }
+  .bue img { width: 100%; height: auto; border-radius: 50% 50% 18px 18px / 40% 40% 18px 18px; border: 2px solid var(--rosegull); box-shadow: 6px 6px 0 var(--rosa); }
+  .bue .ai-merke { top: auto; right: auto; bottom: 14px; left: 14px; }
   .fotoband { position: relative; margin: 0; height: clamp(240px, 30vw, 380px); border-radius: 24px; overflow: hidden; border: 2px solid var(--rosegull); background: var(--kull); display: flex; justify-content: center; }
   .fotoband .bak { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; filter: blur(26px) saturate(1.1) brightness(.75); }
   .fotoband .fram { position: relative; height: 100%; width: auto; max-width: 100%; object-fit: contain; box-shadow: 0 0 60px rgba(0,0,0,.35); }
@@ -136,7 +139,7 @@
   .tuk .knapperad { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 30px; }
   .tuk .knapp-rosa { border-color: var(--rosa); box-shadow: 4px 4px 0 var(--rosegull); }
   .tuk .pris { color: #c9bec3; font-size: .95rem; }
-  @media (max-width: 860px) { .tuk .ramme { grid-template-columns: 1fr; } }
+  @media (max-width: 860px) { .tuk .ramme { grid-template-columns: 1fr; } .tuk .bue { width: 260px; } }
 
   .hilsen { text-align: center; }
   .hilsen .ramme { max-width: 640px; }
@@ -156,7 +159,7 @@
 <header class="meny">
   <div class="ramme">
     <a class="logo" href="index.html">Mathilde Junge<span>.</span></a>
-    <a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about">Bli med<span class="lang">&nbsp;i Tech uten Kaos</span></a>
+    <a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about">Bli med<span class="lang">&nbsp;i&nbsp;Tech uten Kaos</span></a>
   </div>
 </header>
 
@@ -408,7 +411,7 @@
 
   // 6. Tech uten Kaos
   var tuk = el("section", "tuk");
-  tuk.innerHTML = '<div class="ramme"><figure class="fotoband"><img class="bak" src="bilder/mathilde-kaos.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fram" src="bilder/mathilde-kaos.jpg" alt="Mathilde ved en skjerm full av åpne vinduer, med telefonen mot øret" width="1120" height="1400" loading="lazy"><span class="ai-merke">AI-bilde av meg</span></figure>' +
+  tuk.innerHTML = '<div class="ramme"><figure class="bue"><img src="bilder/mathilde-kaos.jpg" alt="Mathilde ved en skjerm full av åpne vinduer, med telefonen mot øret" width="1120" height="1400" loading="lazy"><span class="ai-merke">AI-bilde av meg</span></figure>' +
     '<div><p class="etikett">Neste steg, hvis du vil</p><h2>Kom deg ut av fella i Tech uten <span class="kaos">Kaos</span>.</h2>' +
     '<p class="tekst"></p>' +
     '<ul><li>Tech Timen hver uke, der vi løser det du står fast i</li><li>Hjelp når du står fast, med skjermbilder og uten fagspråk</li><li>Kurs i det du trenger nå, og opptak av alt</li></ul>' +
