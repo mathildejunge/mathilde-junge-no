@@ -796,7 +796,7 @@
     }
     skjema.addEventListener("submit", function () {
       params.set("n", document.getElementById("quiz-navn").value.trim().split(" ")[0]);
-      document.getElementById("quiz-lenke").value = "https://mathilde-junge.no/resultat.html?" + params.toString();
+      document.getElementById("quiz-lenke").value = "www.mathilde-junge.no/resultat.html?" + params.toString();
       var knapp = document.getElementById("portknapp"); knapp.disabled = true; knapp.firstChild.textContent = "Lager resultatet ditt ";
       document.querySelector('iframe[name="kajabi-ramme"]').addEventListener("load", gaaVidere);
       setTimeout(gaaVidere, 2500);
