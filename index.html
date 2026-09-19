@@ -204,14 +204,21 @@
   .kunder { padding-block: clamp(72px, 9vw, 120px); }
   .kunder-topp { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; }
   .kunder-topp p.hand { font-size: 1.7rem; color: var(--rosa-dyp); }
-  .uttalelser { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
-  .uttalelse { background: var(--hvit); border: 1px solid var(--linje); border-radius: 20px; padding: 30px 28px; display: flex; flex-direction: column; gap: 20px; justify-content: space-between; }
-  .uttalelse p { font-size: 1.08rem; line-height: 1.55; }
+  .uttalelser { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 44px; }
+  .uttalelse { background: var(--hvit); border: 1px solid var(--linje); border-radius: 20px; padding: 26px 24px; display: flex; flex-direction: column; gap: 20px; justify-content: space-between; margin: 0; }
+  .uttalelse.stor { padding: clamp(28px, 3.5vw, 40px); border: 2px solid var(--svart); box-shadow: 6px 6px 0 var(--rosa); }
+  .uttalelse.stor p { font-size: clamp(1.05rem, 1.4vw, 1.18rem); line-height: 1.6; }
+  .uttalelse.stor p + p { margin-top: 14px; }
   .uttalelse .anf { font-family: var(--display); font-size: 3rem; line-height: .6; color: var(--rosa); display: block; height: 22px; }
-  .uttalelse .navn { font-weight: 700; font-size: 0.95rem; }
-  .flere { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 28px; color: var(--dempet); font-size: 0.98rem; }
-  .flere span b { color: var(--tekst); font-weight: 600; }
-  @media (max-width: 900px) { .uttalelser { grid-template-columns: 1fr; } }
+  .uttalelse .navn { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 0.98rem; }
+  .uttalelse .navn img, .uttalelse .initial { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--rosa); flex: none; }
+  .uttalelse.liten .navn img, .uttalelse.liten .initial { width: 48px; height: 48px; }
+  .uttalelse .initial { display: grid; place-items: center; background: var(--rosa-lys); color: var(--rosa-dyp); font-family: var(--display); font-weight: 800; font-size: 1.2rem; }
+  .uttalelse .hvem span { display: block; font-weight: 500; color: var(--dempet); font-size: .9rem; }
+  .uttalelse .hvem a { color: var(--rosa-dyp); }
+  .uttalelse.liten p { font-size: .98rem; line-height: 1.55; color: var(--kull); }
+  .flere { margin-top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .uttalelser, .flere { grid-template-columns: 1fr; } }
 
   /* Quiz */
   .quiz-seksjon { padding-block: clamp(72px, 9vw, 120px); background: var(--hvit); border-block: 1px solid var(--linje); }
@@ -480,22 +487,40 @@
         </div>
       </div>
       <div class="uttalelser">
-        <figure class="uttalelse" style="margin:0">
-          <div><span class="anf" aria-hidden="true">“</span><p>Når Mathilde tok seg av teknikken, kunne jeg endelig senke skuldrene og fokusere på det jeg virkelig brenner for. Jeg hadde aldri klart å vokse så raskt uten henne.</p></div>
-          <figcaption class="navn">Mariann Eikelia</figcaption>
+        <figure class="uttalelse stor" style="margin:0">
+          <div><span class="anf" aria-hidden="true">“</span><p>Jeg har jobbet med mange flinke folk, og Mathilde er noe helt unikt. Hun er ikke bare en dyktig virtuell assistent, hun er et powerhouse. Hun løser alt jeg kaster på henne med en sånn ro, fart og «det fikser jeg»-energi at jeg ofte bare må smile og kjenne hvor takknemlig jeg er for å ha henne på laget.</p><p>Jeg har vært mentoren hennes over lengre tid, og det var aldri et spørsmål om jeg skulle ansette henne, det var en selvfølge. Hun er en drøm å jobbe med, og en stor ressurs i businessen min.</p></div>
+          <figcaption class="navn"><img src="bilder/kunder/marit.jpg" alt="" width="240" height="240" loading="lazy"><span class="hvem">Marit Rydland<span><a href="https://soulspace.no" target="_blank" rel="noopener">SoulSpace.no</a></span></span></figcaption>
         </figure>
-        <figure class="uttalelse" style="margin:0">
-          <div><span class="anf" aria-hidden="true">“</span><p>Sto teknisk sett på bar bakke, det føltes overveldende. Mathilde lagde pedagogiske og lette videoer som gjør det enkelt for meg å lære og utføre ting selv.</p></div>
-          <figcaption class="navn">Mette Danielsen</figcaption>
-        </figure>
-        <figure class="uttalelse" style="margin:0">
-          <div><span class="anf" aria-hidden="true">“</span><p>Jeg fikk fnatt av å sette meg inn i nytt system, kontaktet Mathilde, og på et vipps hadde hun fikset det. Min tekniske hånd å holde i.</p></div>
-          <figcaption class="navn">Coach Ingvild</figcaption>
+        <figure class="uttalelse stor" style="margin:0">
+          <div><span class="anf" aria-hidden="true">“</span><p>Mathilde er alltid i forkant og har fikset problemet før jeg rekker å spørre. Jeg opplever en enorm lettelse og frihetsfølelse, og alt flyter helt problemfritt så lenge hun sitter ved roret.</p><p>Når Mathilde tok seg av teknikken, kunne jeg endelig senke skuldrene og fokusere på det jeg virkelig brenner for. Kundene begynte å komme, og jeg fikk mer flyt. Jeg hadde aldri klart å vokse så raskt uten henne. Hun var, og er, en nøkkel i reisen min.</p></div>
+          <figcaption class="navn"><img src="bilder/kunder/mariann.jpg" alt="" width="240" height="240" loading="lazy"><span class="hvem">Mariann Eikelia<span>Badassmedium</span></span></figcaption>
         </figure>
       </div>
       <div class="flere">
-        <span><b>Nina, FinStrek:</b> «Hjelpen din var make or break for at jeg kom i gang.»</span>
-        <span><b>Mayka:</b> «Hun gjør teknikk sexy (jepp, det går an).»</span>
+        <figure class="uttalelse liten" style="margin:0">
+          <p>«Det aller beste med Mathilde er at hun har løst utfordringer jeg ikke visste at jeg kom til å møte. Jeg er så glad for at jeg «kjøpte meg ut» av den tekniske oppstarten, sånn at jeg kan bruke energien min på det jeg skal.»</p>
+          <figcaption class="navn"><img src="bilder/kunder/siri.jpg" alt="" width="240" height="240" loading="lazy"><span class="hvem">Siri Asphaug</span></figcaption>
+        </figure>
+        <figure class="uttalelse liten" style="margin:0">
+          <p>«Da jeg startet, sto jeg teknisk sett nesten på bar bakke. Mathilde har laget pedagogiske og lette videoer som gjør det enkelt for meg å lære og utføre ting selv.»</p>
+          <figcaption class="navn"><img src="bilder/kunder/mette.jpg" alt="" width="240" height="240" loading="lazy"><span class="hvem">Mette Danielsen</span></figcaption>
+        </figure>
+        <figure class="uttalelse liten" style="margin:0">
+          <p>«Mathilde er den typen som fikser ting før jeg rekker å formulere spørsmålet. Hun ser løsninger jeg ikke visste jeg trengte, og gjør teknikk sexy (jepp, det går an).»</p>
+          <figcaption class="navn"><img src="bilder/kunder/mayka.jpg" alt="" width="240" height="240" loading="lazy"><span class="hvem">Mayka</span></figcaption>
+        </figure>
+        <figure class="uttalelse liten" style="margin:0">
+          <p>«Hjelpen fra deg var make or break for at jeg kom i gang. Du var så trygg og rask, og ikke minst hyggelig og blid.»</p>
+          <figcaption class="navn"><img src="bilder/kunder/nina.jpg" alt="" width="240" height="240" loading="lazy"><span class="hvem">Nina, FinStrek</span></figcaption>
+        </figure>
+        <figure class="uttalelse liten" style="margin:0">
+          <p>«Hun gjør livet som travel gründer mye enklere. Om noe ikke fungerer som det skal, i Kajabi eller andre steder, er Mathilde på pletten og fikser det. En teknisk reddende engel.»</p>
+          <figcaption class="navn"><img src="bilder/kunder/jenny.jpg" alt="" width="240" height="240" loading="lazy"><span class="hvem">Jenny Camilla</span></figcaption>
+        </figure>
+        <figure class="uttalelse liten" style="margin:0">
+          <p>«Jeg fikk fnatt av å sette meg inn i nytt system, kontaktet Mathilde, og på et vipps hadde hun fikset det. Min tekniske hånd å holde i.»</p>
+          <figcaption class="navn"><span class="initial" aria-hidden="true">I</span><span class="hvem">Coach Ingvild</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -535,7 +560,7 @@
       <div class="om-innhold">
         <p class="etikett">Om Mathilde</p>
         <h2 id="om-tittel">Jeg lærer ikke dette bort fra en lærebok.</h2>
-        <p class="reise"><span>Junkie</span> <span>Butikkeier</span> <span>Kjøpmann på Rema</span> <span>Ufør</span> <span>Gründer online</span></p>
+        <p class="reise"><span>Junkie</span> <span>Butikkeier</span> <span>Kjøpmann på Rema</span> <span>Ufør</span> <span>Online gründer</span></p>
         <div class="om-tekst">
           <p>Jeg har bygget meg selv opp igjen fra bunnen mer enn én gang. Jeg maste meg til en gratis praksisplass i en dyrebutikk, og fire måneder senere eide jeg hele butikken. Mitt eget AS, fra ingenting.</p>
           <p>Senere ble jeg kjøpmann på Rema 1000. Jeg gapte over for mye, møtte veggen og ble ufør i 2019. Veien tilbake ble ikke sånn jeg hadde sett for meg.</p>
@@ -569,7 +594,8 @@
         <p>De fleste spørsmål får du raskest svar på inne i Tech uten Kaos. Der svarer jeg, og du får hjelp av andre gründere som har stått i det samme.</p>
         <p>Ved siden av communityet tar jeg noen få større prosjekter og samarbeid. Fortell meg hva du trenger, så svarer jeg deg på email.</p>
       </div>
-      <form class="skjema" id="kontaktskjema" action="https://www.mathildejunge.no/forms/2149727223/form_submissions" method="post" accept-charset="UTF-8">
+      <iframe name="kontakt-ramme" title="Kontaktskjema" style="display:none"></iframe>
+      <form class="skjema" id="kontaktskjema" action="https://www.mathildejunge.no/forms/2149727223/form_submissions" method="post" accept-charset="UTF-8" target="kontakt-ramme">
         <input name="utf8" type="hidden" value="&#x2713;">
         <fieldset>
           <legend>Jeg vil…</legend>
@@ -612,7 +638,7 @@
       <h4>Finn meg</h4>
       <ul>
         <li><a href="https://www.skool.com/mathilde/about" target="_blank" rel="noopener">Skool</a></li>
-        <li><a href="#">Instagram</a></li>
+        <li><a href="https://www.instagram.com/mathildejunge.andreomgang/" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="#kontakt">Send meg en melding</a></li>
       </ul>
     </div>
@@ -778,6 +804,16 @@
   nullstill();
   visSporsmal();
 
+  // Kontaktskjema: send til Kajabi i bakgrunnen, og videre til vår egen takkeside
+  (function () {
+    var skjema = document.getElementById("kontaktskjema"), ferdig = false;
+    function videre() { if (ferdig) return; ferdig = true; window.location.href = "takk.html"; }
+    skjema.addEventListener("submit", function () {
+      var k = skjema.querySelector('button[type="submit"]'); k.disabled = true;
+      document.querySelector('iframe[name="kontakt-ramme"]').addEventListener("load", videre);
+      setTimeout(videre, 2500);
+    });
+  })();
   // Kontaktskjema: send de som vil lære til communityet
   var veiviser = document.getElementById("veiviser");
   document.querySelectorAll('input[name="form_submission[custom_8]"]').forEach(function (r) {
