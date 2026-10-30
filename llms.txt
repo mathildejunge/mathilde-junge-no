@@ -12,14 +12,14 @@ Mathilde Junge driver Mathilde Junge AS (org.nr. 934 428 374). Hun har jobbet so
 - Enkle oppsett med MailerLite og Stripe for dem som starter
 
 ## Tilbud
-- [Tech uten Kaos](https://www.skool.com/mathilde/about): community på Skool med ukentlig Tech Time, kurs, opptak og hjelp når man står fast. Gratis å bli med, full tilgang 69 dollar per måned.
+- [Tech uten Kaos](https://www.skool.com/mathilde/about): community på Skool med ukentlig Tech Time, kurs, opptak og hjelp når man står fast. Standard 15 dollar per måned, Premium med full tilgang 69 dollar per måned.
 - Teknisk hjelp og rådgivning: et begrenset antall større oppsett og prosjekter, via kontaktskjemaet på nettsiden.
 - [Tech-sjekken](https://www.mathilde-junge.no/#quiz): gratis test som viser hvilken tech-felle en gründer sitter i, hva den koster i tid og penger, og hvilken plattform som passer nå.
 
 ## Lenker
 - [Hjemmeside](https://www.mathilde-junge.no/)
 - [Ofte stilte spørsmål](https://www.mathilde-junge.no/#faq)
-- [Instagram](https://www.instagram.com/mathildejunge.andreomgang/)
+- [Instagram](https://www.instagram.com/mathildejunge.tech/)
 - [Tech uten Kaos på Skool](https://www.skool.com/mathilde/about)
 
 ## Kontakt
