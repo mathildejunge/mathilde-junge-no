@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rens AI-teksten din | Mathilde Junge</title>
+<meta name="description" content="Prompten som fjerner AI-sporene fra teksten din. Kopier med ett trykk.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --rosa:#ff66c4; --svart:#000; --hvit:#fff; --lys:#fff3fa; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Poppins',sans-serif; background:var(--hvit); color:var(--svart); line-height:1.6; }
+  .topp { background:var(--svart); color:var(--hvit); text-align:center; padding:40px 16px 48px; }
+  .topp img { width:110px; height:110px; border-radius:50%; }
+  .topp h1 { font-size:clamp(30px,7vw,46px); line-height:1.1; margin:18px 0 10px; }
+  .topp h1 span { color:var(--rosa); }
+  .topp p { margin:0 auto; max-width:520px; color:#ddd; }
+  main { max-width:720px; margin:0 auto; padding:32px 16px 48px; }
+  .knapp { display:inline-flex; align-items:center; gap:8px; background:var(--rosa); color:var(--hvit); border:0; border-radius:999px; padding:14px 26px; font:600 16px 'Poppins',sans-serif; cursor:pointer; text-decoration:none; }
+  .knapp:active { transform:scale(.97); }
+  .knapp.ok { background:var(--svart); }
+  .boks { position:relative; background:var(--svart); color:var(--hvit); border-left:6px solid var(--rosa); border-radius:12px; padding:22px 20px; margin:20px 0; }
+  .boks pre { margin:0; white-space:pre-wrap; word-wrap:break-word; font:14px/1.6 'Poppins',sans-serif; }
+  .midt { text-align:center; }
+  h2 { font-size:24px; margin:40px 0 10px; }
+  h2 span { color:var(--rosa); }
+  ol li { margin-bottom:6px; }
+  .tips { background:var(--lys); border:2px solid var(--rosa); border-radius:12px; padding:16px 18px; }
+  .cta { background:var(--svart); color:var(--hvit); border-radius:16px; padding:28px 22px; margin-top:40px; text-align:center; }
+  .cta h3 { color:var(--rosa); font-size:22px; margin:0 0 8px; }
+  .cta p { margin:0 0 18px; color:#ddd; }
+  footer { text-align:center; font-size:13px; color:#888; padding:0 16px 32px; }
+</style>
+</head>
+<body>
+<header class="topp">
+  <img src="/rens-ai/tuk-logo.webp" alt="Tech uten Kaos">
+  <h1>Rens <span>AI-teksten</span> din</h1>
+  <p>Prompten som fjerner AI-sporene fra teksten din. Trykk på knappen, så har du den.</p>
+</header>
+
+<main>
+  <div class="midt"><button class="knapp" data-kopier>📋 Kopier prompten</button></div>
+
+  <div class="boks"><pre id="prompt">Du er en språkvasker. Jeg limer inn en tekst jeg har skrevet med hjelp av AI. Skriv den om sånn at den høres ut som et ekte menneske på norsk, og at ingen kan se at AI har vært borti den.
+
+Regler:
+1. Ingen tankestreker (– eller —). Bruk komma, punktum eller parentes.
+2. Skriv «en», aldri «én», også når det betyr tallet.
+3. Ingen setninger av typen «Det handler ikke om X, det handler om Y» eller «ikke X, men Y». Si bare det jeg mener.
+4. Ingen retoriske spørsmål inni teksten. Gjør dem om til påstander. Ett ekte spørsmål helt til slutt er lov.
+5. Ingen korte slagord på rad, som «Mindre stress. Mer flyt.»
+6. Stryk disse ordene: dykke ned, sømløs, helhetlig, holistisk, robust, banebrytende, til syvende og sist, egentlig, faktisk, virkelig, rett og slett.
+7. Ikke start med «I dagens digitale verden», «Har du noen gang følt at» eller en hilsen. Start med noe konkret.
+8. Ingen «Kjære deg» eller «Jeg ser deg».
+9. Ikke overdriv. Kall ting det de er.
+10. Maks ett utropstegn per avsnitt. Ikke legg til emojier som ikke står i originalen.
+11. Ikke avslutt med en rekke korte kommandoer. Avslutt varmt og naturlig.
+12. Varier lengden på setninger og avsnitt.
+13. Ikke ros leseren uten grunn.
+14. Skriv norsk sånn folk snakker, ikke oversatt engelsk.
+15. Ikke legg til fakta, tall eller historier som ikke står i teksten min.
+
+Behold poenget og stemmen min, og kutt rundt 20 prosent. Gi meg bare den ferdige teksten, uten forklaring.
+
+Teksten min:
+[LIM INN TEKSTEN DIN HER]</pre></div>
+
+  <div class="midt"><button class="knapp" data-kopier>📋 Kopier prompten</button></div>
+
+  <h2>Sånn <span>bruker</span> du den</h2>
+  <ol>
+    <li>Lim prompten inn i Claude eller ChatGPT.</li>
+    <li>Bytt ut [LIM INN TEKSTEN DIN HER] med teksten din.</li>
+    <li>Les resultatet høyt. Høres noe skrevet ut, skriv det om med dine egne ord.</li>
+  </ol>
+  <div class="tips"><b>Tips:</b> Lim inn tre tekster du har skrevet helt selv først, og skriv «Skriv i samme stemme som disse». Da får du tilbake en tekst som høres ut som akkurat deg.</div>
+
+  <div class="cta">
+    <h3>Vil du at AI skal skrive som deg fra start?</h3>
+    <p>Det er akkurat det vi jobber med i Tech uten Kaos. Kurset Claude som SoMe-maskin ligger klart i classroom, og du får hjelp på Tech Timen hver uke.</p>
+    <a class="knapp" href="https://www.skool.com/mathilde/about">Bli med i Tech uten Kaos</a>
+  </div>
+</main>
+<footer>Jeg heier på deg 💕 Mathilde Junge · Tech uten Kaos</footer>
+
+<script>
+  const tekst = document.getElementById('prompt').innerText;
+  document.querySelectorAll('[data-kopier]').forEach(function (k) {
+    k.addEventListener('click', async function () {
+      try { await navigator.clipboard.writeText(tekst); }
+      catch (e) {
+        const t = document.createElement('textarea');
+        t.value = tekst; document.body.appendChild(t); t.select();
+        document.execCommand('copy'); t.remove();
+      }
+      document.querySelectorAll('[data-kopier]').forEach(function (b) {
+        b.textContent = '✅ Kopiert, lim den inn i AI-en din'; b.classList.add('ok');
+      });
+      setTimeout(function () {
+        document.querySelectorAll('[data-kopier]').forEach(function (b) {
+          b.textContent = '📋 Kopier prompten'; b.classList.remove('ok');
+        });
+      }, 3000);
+    });
+  });
+</script>
+</body>
+</html>
