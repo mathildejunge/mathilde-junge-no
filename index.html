@@ -554,7 +554,7 @@
       <div class="quiz-tekst">
         <p class="etikett">Gratis Tech-sjekk, tar tre minutter</p>
         <h2 id="quiz-tittel" style="margin-top:12px">Hvor sitter du fast?</h2>
-        <p class="intro">Svar på ni korte spørsmål, så får du din personlige Tech-sjekk: fella du sitter i, hvor mye den koster deg i timer og kroner, hva du trygt kan droppe, og hvilken plattform som passer deg akkurat nå.</p>
+        <p class="intro">Svar på ni korte spørsmål, så får du din personlige Tech-sjekk: hvilke verktøy du bør velge og hva de koster, hva du trygt kan droppe, og fella du sitter i.</p>
       </div>
       <div>
         <div class="quiz" id="quizboks" aria-live="polite">
@@ -705,67 +705,72 @@
 
 <script>
 (function () {
-  // Tech-sjekken: 9 spørsmål som gir fella (f), plattform (p), fase (s), tid (t) og verktøykost (v)
+  // Tech-sjekken: 9 spørsmål som gir fella (f), plattform (p) og info om henne (fag, sel, har, d, t, v, prio)
   var sporsmal = [
-    { q: "Hvor lenge har du holdt på med businessen din?", a: [
-      ["Jeg har ikke startet ennå", { s: 0, p: { enkel: 1, skool: 1 } }],
-      ["Under ett år", { s: 1 }],
-      ["Ett til to år", { s: 2 }],
-      ["Mer enn to år", { s: 3, p: { kajabi: 1 } }]
+    { q: "Hva jobber du med?", a: [
+      ["Coach eller terapeut", { fag: 0 }],
+      ["Yoga, kropp eller pust", { fag: 1 }],
+      ["Healing eller intuitivt arbeid", { fag: 2 }],
+      ["Noe kreativt, som kunst, design eller skriving", { fag: 3 }],
+      ["Noe annet", { fag: 4 }]
     ]},
-    { q: "Hva selger du, eller vil selge først?", a: [
-      ["Et community eller medlemskap", { p: { skool: 3 } }],
-      ["Et kurs eller et digitalt produkt", { p: { kajabi: 2, enkel: 1 } }],
-      ["Timer, behandlinger eller 1:1", { p: { enkel: 3 } }],
-      ["Jeg vet ikke helt ennå", { p: { enkel: 2, skool: 1 } }]
+    { q: "Hva vil du selge på nett først?", a: [
+      ["Et community eller medlemskap", { sel: 0, p: { skool: 3 } }],
+      ["Et kurs", { sel: 1, p: { skool: 2, kajabi: 1 } }],
+      ["Webinarer, workshops eller live-kurs", { sel: 2, p: { skool: 2, enkel: 1 } }],
+      ["Timer, behandlinger eller 1:1 på nett", { sel: 3, p: { enkel: 3 } }],
+      ["Store kurs og webinarer som går av seg selv", { sel: 4, p: { stor: 4, kajabi: 1 } }]
+    ]},
+    { q: "Hvilken plattform har du i dag?", a: [
+      ["Ingen ennå", { har: "ingen" }],
+      ["Kajabi", { har: "kajabi", p: { kajabi: 3 } }],
+      ["Skool", { har: "skool", p: { skool: 3 } }],
+      ["En nettside på Wix, Squarespace eller WordPress", { har: "nettside" }],
+      ["Noe annet", { har: "annet" }]
+    ]},
+    { q: "Har du en dato i kalenderen, som et webinar eller en lansering?", a: [
+      ["Ja, innen en måned", { d: 2, f: { panikk: 1 } }],
+      ["Ja, innen tre måneder", { d: 1 }],
+      ["Nei, ikke ennå", { d: 0 }]
     ]},
     { q: "Når noe teknisk stopper deg, hva gjør du oftest?", a: [
-      ["Googler og ser YouTube til langt på kveld", { f: { fane: 3 } }],
-      ["Sender det til noen som kan fikse det for meg", { f: { avhengig: 3 } }],
+      ["Betaler eller ber noen fikse det for meg", { f: { knapp: 3 } }],
+      ["Googler, ser YouTube og spør ChatGPT til langt på kveld", { f: { fane: 3 } }],
       ["Kjøper et kurs eller en mal som skal løse det", { f: { kurs: 3 } }],
-      ["Legger det bort og prøver noe helt annet", { f: { hopp: 3 } }]
-    ]},
-    { q: "Hvor mange kurs har du kjøpt det siste året, som du ikke har fullført?", a: [
-      ["Ingen", {}],
-      ["Ett eller to", { f: { kurs: 1 } }],
-      ["Tre til fem", { f: { kurs: 2 } }],
-      ["Jeg har sluttet å telle 😅", { f: { kurs: 3 } }]
-    ]},
-    { q: "Hvor mange ganger har du byttet plattform, funnel eller strategi det siste året?", a: [
-      ["Ingen", {}],
-      ["En gang", { f: { hopp: 1 } }],
-      ["To eller tre ganger", { f: { hopp: 2 } }],
-      ["Jeg mister tellingen", { f: { hopp: 3 } }]
+      ["Legger det bort, for jeg er jo ikke teknisk", { f: { ikketeknisk: 3 } }],
+      ["Får panikk, særlig når det haster", { f: { panikk: 3 } }]
     ]},
     { q: "Hvilken setning høres mest ut som deg?", a: [
-      ["Jeg ser hva de store gjør, og tenker at jeg må ha det samme", { f: { kopi: 3 }, sist: "kopi" }],
-      ["Jeg har altfor mange faner åpne akkurat nå", { f: { fane: 2 }, sist: "fane" }],
-      ["Jeg venter på at noen skal ha tid til å fikse noe for meg", { f: { avhengig: 2 }, sist: "avhengig" }],
-      ["Jeg har en ny plan nesten hver mandag", { f: { hopp: 2 }, sist: "hopp" }],
-      ["Jeg har en hel mappe med kurs jeg skal ta", { f: { kurs: 2 }, sist: "kurs" }]
+      ["Jeg føler meg dum når jeg står fast i noe teknisk", { f: { ikketeknisk: 2 }, sist: "ikketeknisk" }],
+      ["Jeg får panikk når noe svikter midt i noe viktig", { f: { panikk: 2 }, sist: "panikk" }],
+      ["Alle andre ser ut til å ha et team, jeg må betale noen hver gang", { f: { knapp: 2 }, sist: "knapp" }],
+      ["Jeg har kjøpt kurs, men vet fortsatt ikke neste steg", { f: { kurs: 2 }, sist: "kurs" }],
+      ["Jeg har altfor mange faner åpne akkurat nå", { f: { fane: 2 }, sist: "fane" }]
     ]},
-    { q: "Hvor mye tid går til tech i en vanlig uke?", a: [
+    { q: "Hvor mye tid går til det tekniske i en vanlig uke?", a: [
       ["Under en time", { t: 0 }],
       ["En til tre timer", { t: 1 }],
       ["Tre til seks timer", { t: 2, f: { fane: 1 } }],
       ["Mer enn seks timer", { t: 3, f: { fane: 1 } }]
     ]},
-    { q: "Hva har du på plass i dag?", a: [
-      ["Ingenting ennå", { p: { enkel: 2, skool: 1 } }],
-      ["Bare sosiale medier", { p: { enkel: 2, skool: 1 } }],
-      ["Nettside, men ingen email-liste", { p: { enkel: 2 } }],
-      ["Nettside, email-liste og minst ett produkt", { p: { kajabi: 3 } }]
-    ]},
-    { q: "Hva betaler du for verktøy og plattformer i måneden, omtrent?", a: [
+    { q: "Hva betaler du for verktøy og tech-hjelp i måneden, omtrent?", a: [
       ["Ingenting", { v: 0 }],
       ["Under 500 kr", { v: 1 }],
-      ["500 til 1500 kr", { v: 2, f: { kopi: 1 } }],
-      ["Over 1500 kr", { v: 3, f: { kopi: 2 }, p: { kajabi: 1 } }]
+      ["500 til 1500 kr", { v: 2 }],
+      ["Over 1500 kr", { v: 3, f: { knapp: 1 } }]
+    ]},
+    { q: "Hva er viktigst for deg akkurat nå?", a: [
+      ["At det koster minst mulig", { prio: 0, p: { enkel: 2, skool: 1 } }],
+      ["At jeg kommer raskt i gang", { prio: 1, p: { skool: 2, enkel: 1 } }],
+      ["At jeg har alt samlet på ett sted", { prio: 2, p: { kajabi: 2 } }],
+      ["At det kan vokse og gå mer av seg selv etter hvert", { prio: 3, p: { stor: 2, kajabi: 1 } }]
     ]}
   ];
-  var MAKS = { kurs: 8, kopi: 5, avhengig: 5, fane: 6, hopp: 8 };
-  var FELLENAVN = { kurs: "Kursfella", kopi: "Kopifella", avhengig: "Knappefella", fane: "Fanefella", hopp: "Hoppefella" };
-  var PLATTFORMNAVN = { skool: "Skool", kajabi: "Kajabi", enkel: "Et enkelt oppsett" };
+  var MAKS = { ikketeknisk: 5, panikk: 6, knapp: 6, kurs: 5, fane: 6 };
+  var FELLENAVN = { ikketeknisk: "Ikke teknisk-fella", panikk: "Panikkfella", knapp: "Knappefella", kurs: "Kursfella", fane: "Fanefella" };
+  // Teksten under må inneholde «Skool», «Kajabi» eller «enkelt», for det er det Quiz Automasjon i Kajabi sorterer emailene etter
+  var PLATTFORMNAVN = { skool: "Skool", enkel: "Et enkelt oppsett med MailerLite", kajabi: "Kajabi", stor: "Kajabi eller GoHighLevel med WebinarFuel" };
+  var REKKEFOLGE = ["skool", "enkel", "kajabi", "stor"];
 
   var boks = document.getElementById("quizinnhold");
   var fremdrift = document.querySelector(".quiz-fremdrift");
@@ -773,9 +778,9 @@
 
   function nullstill() {
     steg = 0;
-    felle = { kurs: 0, kopi: 0, avhengig: 0, fane: 0, hopp: 0 };
-    plattform = { skool: 0, kajabi: 0, enkel: 0 };
-    info = { s: 1, t: 1, v: 1, sist: "fane" };
+    felle = { ikketeknisk: 0, panikk: 0, knapp: 0, kurs: 0, fane: 0 };
+    plattform = { skool: 0, enkel: 0, kajabi: 0, stor: 0 };
+    info = { fag: 4, sel: 1, har: "ingen", d: 0, t: 1, v: 1, prio: 1, sist: "ikketeknisk" };
   }
   function tegnFremdrift() {
     fremdrift.innerHTML = "";
@@ -794,9 +799,11 @@
       var b = document.createElement("button"); b.type = "button"; b.textContent = svar[0];
       b.addEventListener("click", function () {
         var d = svar[1];
-        if (d.f) Object.keys(d.f).forEach(function (k) { felle[k] += d.f[k]; });
-        if (d.p) Object.keys(d.p).forEach(function (k) { plattform[k] += d.p[k]; });
-        ["s", "t", "v", "sist"].forEach(function (k) { if (d[k] !== undefined) info[k] = d[k]; });
+        Object.keys(d).forEach(function (k) {
+          if (k === "f") Object.keys(d.f).forEach(function (x) { felle[x] += d.f[x]; });
+          else if (k === "p") Object.keys(d.p).forEach(function (x) { plattform[x] += d.p[x]; });
+          else info[k] = d[k];
+        });
         steg++;
         steg < sporsmal.length ? visSporsmal() : visPort();
       });
@@ -808,20 +815,20 @@
   function regnUt() {
     var rangert = Object.keys(felle).map(function (k) { return [k, felle[k] / MAKS[k]]; })
       .sort(function (a, b) { return (b[1] - a[1]) || ((b[0] === info.sist) - (a[0] === info.sist)); });
-    var p = Object.keys(plattform).sort(function (a, b) { return (plattform[b] - plattform[a]) || ((b === "enkel") - (a === "enkel")); })[0];
-    var k = Math.round(15 + rangert[0][1] * 45 + rangert[1][1] * 15 + info.t * 7 + info.v * 2);
+    var p = REKKEFOLGE.slice().sort(function (a, b) { return (plattform[b] - plattform[a]) || (REKKEFOLGE.indexOf(a) - REKKEFOLGE.indexOf(b)); })[0];
+    var k = Math.round(15 + rangert[0][1] * 45 + rangert[1][1] * 15 + info.t * 7 + info.v * 2 + info.d * 3);
     k = Math.max(12, Math.min(96, k));
-    return { f: rangert[0][0], f2: rangert[1][1] > 0.25 ? rangert[1][0] : "", p: p, k: k };
+    return { f: rangert[0][0], f2: rangert[1][1] > 0.3 ? rangert[1][0] : "", p: p, k: k };
   }
   function visPort() {
     steg = sporsmal.length; tegnFremdrift();
     var r = regnUt();
-    var params = new URLSearchParams({ f: r.f, f2: r.f2, p: r.p, s: info.s, t: info.t, v: info.v, k: r.k });
+    var params = new URLSearchParams({ f: r.f, f2: r.f2, p: r.p, fag: info.fag, sel: info.sel, har: info.har, d: info.d, t: info.t, v: info.v, prio: info.prio, k: r.k });
     boks.innerHTML =
       '<div class="port">' +
       '<p class="etikett">Resultatet ditt er klart</p>' +
       '<p class="quiz-sporsmal" style="margin-top:6px">Hvor skal jeg sende det?</p>' +
-      '<p class="port-tekst">Du får den personlige Tech-sjekken din med en gang: fella du sitter i, hva den koster deg, hva du trygt kan droppe og plattformen som passer deg nå. Oppskriften for å komme i gang kommer på email.</p>' +
+      '<p class="port-tekst">Du får den personlige Tech-sjekken din med en gang: hvilke verktøy du bør velge, hva de koster, hva du trygt kan droppe, og fella du sitter i. Oppskriften for å komme i gang kommer på email.</p>' +
       '<iframe name="kajabi-ramme" title="Påmelding" style="display:none"></iframe>' +
       '<form class="quiz-skjema" id="portskjema" action="https://www.mathildejunge.no/forms/2149727222/form_submissions" method="post" accept-charset="UTF-8" target="kajabi-ramme">' +
       '<input name="utf8" type="hidden" value="&#x2713;">' +

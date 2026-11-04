@@ -118,6 +118,37 @@
   .oppskrift span { color: var(--dempet); }
   .ogsaa { margin-top: 22px; color: var(--dempet); font-size: .98rem; }
 
+
+  /* Verktøyvalget */
+  .velg { background: var(--svart); color: var(--hvit); border-radius: 24px; padding: clamp(24px, 4vw, 40px); box-shadow: 6px 6px 0 var(--rosa); }
+  .velg .etikett { color: var(--rosa); }
+  .velg h2 { margin-top: 10px; color: var(--hvit); }
+  .velg-tekst { margin-top: 14px; font-size: clamp(1.1rem, 1.8vw, 1.3rem); max-width: 52ch; }
+  .velg-sum { margin-top: 14px; font-family: var(--hand); font-size: 1.7rem; color: var(--rosegull); line-height: 1.2; }
+  .velg-har { margin-top: 18px; padding-top: 18px; border-top: 1px solid #3a3034; color: #eadfe3; font-size: 1rem; max-width: 64ch; }
+  .velg-har b { color: var(--rosa); }
+  .plattform h3.under { margin-top: 48px; font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 800; }
+  .plattform .hvorfor { margin-top: 26px; }
+  .kasse { margin-top: 20px; border: 2px solid var(--svart); border-radius: 20px; overflow: hidden; background: var(--hvit); }
+  .kasse-rad { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 18px 28px; padding: 20px 22px; }
+  .kasse-rad + .kasse-rad { border-top: 1px solid var(--linje); }
+  .kasse-hva { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--dempet); }
+  .kasse-navn { font-family: var(--display); font-weight: 800; font-size: 1.35rem; margin-top: 4px; }
+  .kasse-pris { color: var(--kull); font-size: 1rem; }
+  .kasse-lenker { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .knapp.liten { padding: 8px 14px; font-size: .9rem; }
+  .plattform .droppliste { margin-top: 18px; }
+  .hjelp { margin-top: 32px; padding: 22px 24px; border-radius: 18px; background: var(--rosa-lys); display: grid; gap: 16px; justify-items: start; }
+  @media (max-width: 640px) { .kasse-rad { grid-template-columns: 1fr; gap: 8px; } }
+
+  /* Dato */
+  .dato { background: var(--rosa-lys); border-block: 1px solid var(--linje); }
+  .dato .ramme { max-width: 900px; }
+  .dato h2 { margin-top: 12px; }
+  .dato-intro { margin-top: 14px; font-size: 1.1rem; }
+  .dato .oppskrift li { background: var(--hvit); }
+  .kort-felle { margin-top: 16px; font-size: 1.15rem; color: var(--dempet); max-width: 34ch; }
+
   /* TUK */
   .tuk { background: var(--svart); color: var(--hvit); }
   .tuk .ramme { display: grid; grid-template-columns: auto 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
@@ -174,60 +205,70 @@
 
 <script>
 (function () {
+  var LENKE = {
+    skool: "https://www.skool.com/signup?ref=fbd3fa221318436cad21ce8bffbf6681",
+    mailerlite: "https://www.mailerlite.com/invite/67c6e8dab25a6",
+    claude: "https://claude.ai/referral/s_rKAcpVdQ?s=cowork&v=apps",
+    kajabi30: "https://app.kajabi.com/r/XFLqjFr8/t/nrlas6da",
+    kajabi99: "https://app.kajabi.com/r/XFLqjFr8/t/ho929nvv"
+  };
+  var CLAUDE = ["AI-hjelp til tekster og spørsmål", "Claude", "Gratis å begynne med. Pro koster 20 dollar i måneden.", [["Prøv Claude", LENKE.claude]]];
+  var KAJABI = ["Kurs, nettside, email og betaling", "Kajabi", "Basic koster 179 dollar i måneden, eller 143 dollar i måneden ved årlig betaling.", [["Prøv 30 dager gratis", LENKE.kajabi30], ["3 måneder for 99 dollar", LENKE.kajabi99]]];
+
   var FELLER = {
-    kurs: {
-      navn: "Kursfella",
-      kort: "Du har kjøpt kunnskap. Det du mangler er noen som hjelper deg å bruke den.",
+    ikketeknisk: {
+      navn: "Ikke teknisk-fella",
+      kort: "Du har sagt «jeg er ikke teknisk» så mange ganger at du har begynt å tro på det.",
       staar: [
-        "Du har kjøpt kurs. Du har sett videoer. Du har lagret hundrevis av innlegg. Og hver gang du står fast, er den første tanken at du må lære mer før du kan gå videre.",
-        "Du er ikke lat, og du er ikke dum. Du tar ting på alvor, og derfor vil du kunne det ordentlig før du gjør det. Problemet er at hvert nytt kurs gir deg mer informasjon og mindre plass i hodet. Du sitter igjen med fem halvferdige moduler og følelsen av at du burde kunne mer enn du kan.",
-        "Sannheten er kjedelig enkel: du vet allerede nok til å ta neste steg. Du trenger hjelp til å bruke det du har."
+        "Du er dyktig i faget ditt. Kundene dine stoler på deg, og du har noe ekte å lære bort. Men så skal du lage et kurs, sette opp en side eller sende en email, og plutselig føler du deg stokk dum.",
+        "Så du utsetter det. Datamaskinen blir liggende, og du venter til du har bedre tid, eller til noen kan hjelpe deg. Hver gang du står fast, blir det et nytt bevis på at «sånn er jeg bare».",
+        "Du trenger ikke bli teknisk. Du trenger å lære akkurat nok til å gjøre det du skal, steg for steg, av noen som ikke sukker når du spør om det samme igjen."
       ],
-      koster: "Hvert kurs du ikke fullfører koster deg to ganger. Først pengene, og så selvtilliten, fordi det blir enda et bevis på at «jeg får det ikke til».",
+      koster: "Det koster deg tid, men mest koster det deg mot. Ideene blir liggende, og kundene som trenger deg, finner deg ikke.",
       droppe: [
-        ["Neste kurs i handlekurven", "La det ligge der i 30 dager. Det er der fortsatt etterpå."],
-        ["Alle modulene du ikke trenger nå", "Du trenger bare den ene som løser problemet du har i dag."],
-        ["Tanken om at du må kunne alt før du selger", "Ingen kan alt. De som selger, begynte før de var klare."]
+        ["Å vente til du føler deg klar", "Den følelsen kommer som regel etter at du har gjort det, ikke før."],
+        ["Å lære alt på en gang", "Du trenger bare neste steg. Resten tar du når du kommer dit."],
+        ["Å si «jeg er ikke teknisk»", "Si heller «det har jeg ikke lært ennå». Det er sant, og det kan endres."]
       ],
       plan: [
-        ["Uke 1", "Skriv ned alle kursene du har kjøpt, og velg ett. Bare ett."],
-        ["Uke 2", "Finn den ene leksjonen som løser problemet du står i nå. Se den, og gjør oppgaven ferdig."],
-        ["Uke 3 og 4", "Bruk det du lærte på noe ekte i businessen din. Står du fast, spør du noen, i stedet for å kjøpe et nytt kurs."]
+        ["Uke 1", "Lag kontoene i verktøyforslaget ditt. Bare det. Kryss det av."],
+        ["Uke 2", "Gjør det første steget i oppskriften. Står du fast, skriver du ned hva du står fast på, og spør noen."],
+        ["Uke 3 og 4", "Gjør steg to og tre. Det trenger ikke være pent. Det skal bare være oppe."]
       ]
     },
-    kopi: {
-      navn: "Kopifella",
-      kort: "Du prøver å bygge en business som er laget for en gründer med et team på 14.",
+    panikk: {
+      navn: "Panikkfella",
+      kort: "Alt går fint helt til noe svikter, og da fryser du.",
       staar: [
-        "Du ser hva de store gründerne gjør. Funnels, webinarer, daglig posting, lanseringer og email-sekvenser på 21 dager. Og du tenker at sånn må det være, for det er jo sånn de har lykkes.",
-        "Det du ikke ser, er teamet bak, budsjettet og årene de har brukt. Modellen deres krever mer tid, penger og kapasitet enn du har akkurat nå, og da føles det som om det er du som ikke strekker til.",
-        "Du trenger ikke kopiere infrastrukturen til en som omsetter for 50 millioner når målet er dine første ti kunder."
+        "Du får til mye selv. Men når livesendingen starter og chatten er borte, lenken i mailen ikke virker eller skjermen spør om noe du ikke skjønner, kjenner du panikken komme.",
+        "Det verste er at det skjer når det betyr mest. Folk sitter og venter, du har ikke tid til å google, og etterpå tenker du at du aldri skal gjøre noe sånt igjen.",
+        "Panikken handler sjelden om at du ikke kan nok. Den handler om at det ikke er testet på forhånd, og at du ikke vet hvem du kan spørre når det skjer."
       ],
-      koster: "Du bruker energien på å bygge maskineri, og da blir det lite igjen til å snakke med kunder. Når maskineriet ikke gir resultater, tror du at feilen ligger hos deg.",
+      koster: "En svikt foran folk koster mer enn tid. Den kan koste salg, og den koster lysten til å prøve igjen.",
       droppe: [
-        ["Funnelen med 47 steg", "Ett tilbud og en side holder lenge."],
-        ["Å poste hver dag overalt", "Velg en kanal, og bli der."],
-        ["Webinar, challenge og lansering samtidig", "Velg en måte å selge på dette kvartalet."]
+        ["Nye verktøy rett før en dato", "Bruk det du kan. Test det nye etterpå."],
+        ["Å ordne alt kvelden før", "Det du har testet en uke før, får du ikke panikk av."],
+        ["Å stå alene i det", "Ha noen du kan sende en melding til mens det skjer."]
       ],
       plan: [
-        ["Uke 1", "Skriv ned alt du tror du må ha på plass. Stryk alt som ikke hjelper deg å få neste kunde."],
-        ["Uke 2", "Velg ett tilbud og en kanal. Skriv tre innlegg som forklarer hvem du hjelper og hvordan."],
-        ["Uke 3 og 4", "Snakk med fem mennesker i målgruppen din. De fleste første salg kommer fra samtaler."]
+        ["Uke 1", "Skriv ned alt som må virke på dagen din: påmelding, mailer, lenker, betaling og selve sendingen."],
+        ["Uke 2", "Gå hele veien selv, som om du var kunden. Meld deg på, få mailen, klikk på lenken."],
+        ["Uke 3 og 4", "Kjør en prøvesending med en venn, og lag en plan B, for eksempel en ekstra lenke til Google Meet eller Zoom."]
       ]
     },
-    avhengig: {
+    knapp: {
       navn: "Knappefella",
       kort: "Du betaler noen hver gang en knapp skal flyttes, og du forstår fortsatt ikke helt din egen business.",
       staar: [
-        "Du har gjort det mange smarte gründere gjør: du har kjøpt deg hjelp til det tekniske. Det løste problemet der og da, og det var helt riktig å gjøre i starten.",
-        "Men neste gang noe skulle endres, måtte du betale igjen. Et bilde på landingssiden, en link som ikke virker, en automatisering som stoppet. Du venter på svar, og businessen står stille imens.",
+        "Du har gjort det mange smarte gründere gjør: du har kjøpt deg hjelp til det tekniske. Det løste problemet der og da, og det var riktig å gjøre i starten.",
+        "Men neste gang noe skulle endres, måtte du betale igjen. Et bilde på siden, en lenke som ikke virker, en mail som ikke ble sendt. Du venter på svar, og businessen står stille imens. Det ser ut som alle andre har et team, mens du betaler for hver lille ting.",
         "Jeg har vært den VA-en du ringer. Derfor vet jeg at mye av dette kan du lære å fikse selv, sånn at du bare betaler for hjelp når det gir mening."
       ],
       koster: "Du blir avhengig av andres kalender, og hver lille endring koster både penger og dager. Og det verste: du føler deg som en gjest i din egen business.",
       droppe: [
-        ["Å be om hjelp til timinutters-jobber", "Bytte bilde, oppdatere en link eller endre en tekst kan du lære en gang."],
+        ["Å be om hjelp til timinutters-jobber", "Bytte bilde, oppdatere en lenke eller endre en tekst kan du lære en gang."],
         ["Tanken om at du «ikke er teknisk»", "Du trenger ikke være teknisk. Du trenger å lære akkurat nok."],
-        ["Systemer du ikke vet hvorfor du har", "Alt du betaler for, skal du kunne forklare hva gjør."]
+        ["Verktøy du ikke vet hvorfor du har", "Alt du betaler for, skal du kunne forklare hva gjør."]
       ],
       plan: [
         ["Uke 1", "Logg inn på plattformen din og klikk deg gjennom hver meny. Skriv ned det du ikke forstår."],
@@ -235,17 +276,37 @@
         ["Uke 3 og 4", "Lag din egen lille oppslagsbok med skjermbilder, så du husker hvordan du gjorde det neste gang."]
       ]
     },
+    kurs: {
+      navn: "Kursfella",
+      kort: "Du har kjøpt kunnskap. Det du mangler er noen som hjelper deg å bruke den.",
+      staar: [
+        "Du har kjøpt kurs. Du har sett videoer. Du har lagret hundrevis av innlegg. Og hver gang du står fast, er den første tanken at du må lære mer før du kan gå videre.",
+        "Du er ikke lat, og du er ikke dum. Du tar ting på alvor, og derfor vil du kunne det ordentlig før du gjør det. Problemet er at hvert nye kurs gir deg mer informasjon og mindre plass i hodet.",
+        "Du vet sannsynligvis allerede nok til å ta neste steg. Du trenger hjelp til å bruke det du har."
+      ],
+      koster: "Hvert kurs du ikke fullfører koster deg to ganger. Først pengene, og så selvtilliten, fordi det blir enda et bevis på at «jeg får det ikke til».",
+      droppe: [
+        ["Neste kurs i handlekurven", "La det ligge der i 30 dager. Det er der fortsatt etterpå."],
+        ["Alle modulene du ikke trenger nå", "Du trenger bare den som løser problemet du har i dag."],
+        ["Tanken om at du må kunne alt før du selger", "De som selger, begynte som regel før de følte seg klare."]
+      ],
+      plan: [
+        ["Uke 1", "Skriv ned alle kursene du har kjøpt, og velg ett. Bare ett."],
+        ["Uke 2", "Finn den leksjonen som løser problemet du står i nå. Se den, og gjør oppgaven ferdig."],
+        ["Uke 3 og 4", "Bruk det du lærte på noe ekte i businessen din. Står du fast, spør du noen i stedet for å kjøpe et nytt kurs."]
+      ]
+    },
     fane: {
       navn: "Fanefella",
       kort: "Du prøver å lære alt selv, og ender med 48 faner åpne klokka elleve om kvelden.",
       staar: [
-        "Du er flink til å finne ut av ting. Du googler, ser YouTube, spør i Facebook-grupper og lagrer innlegg. Du gir deg ikke.",
-        "Problemet er at du finner 17 forskjellige svar på det samme spørsmålet. Halvparten er utdaterte, og resten er laget for en annen plattform enn den du bruker. Du sitter igjen med mer rot enn da du startet, og kvelden er borte.",
+        "Du er flink til å finne ut av ting. Du googler, ser YouTube, spør ChatGPT og lagrer innlegg. Du gir deg ikke.",
+        "Problemet er at du finner 17 forskjellige svar på det samme spørsmålet. Mange er utdaterte, og resten er laget for en annen plattform enn den du bruker. Du sitter igjen med mer rot enn da du startet, og kvelden er borte.",
         "Du trenger ikke flere svar. Du trenger ett svar som passer akkurat ditt oppsett, fra noen som forklarer det sånn at du skjønner det."
       ],
-      koster: "Timer. Mange timer. Timer du kunne brukt på kundene dine, på fagområdet ditt, eller på å lukke Mac-en klokka fire uten dårlig samvittighet.",
+      koster: "Timer. Mange timer. Timer du kunne brukt på kundene dine, på faget ditt, eller på å lukke Mac-en klokka fire uten dårlig samvittighet.",
       droppe: [
-        ["YouTube-videoer eldre enn ett år", "Plattformene endrer seg for fort. Knappen er sjelden der videoen sier."],
+        ["YouTube-videoer eldre enn ett år", "Plattformene endrer seg fort. Knappen er sjelden der videoen sier."],
         ["Facebook-grupper med 40 meninger", "Alle har et svar, og ingen kjenner oppsettet ditt."],
         ["Å løse alt i kveld", "Skriv spørsmålet ned, og ta det med til noen som vet."]
       ],
@@ -255,58 +316,148 @@
         ["Uke 3 og 4", "Legg inn en fast tech-time i uka. Resten av uka har tech ikke lov å stjele kveldene dine."]
       ]
     },
+    // Fra den gamle versjonen av quizen, så lenker som allerede er sendt ut fortsatt virker
+    kopi: {
+      navn: "Kopifella",
+      kort: "Du prøver å bygge en business som er laget for en gründer med et helt team.",
+      staar: [
+        "Du ser hva de store gründerne gjør, og tenker at sånn må det være, for det er jo sånn de har lykkes.",
+        "Det du ikke ser, er teamet bak, budsjettet og årene de har brukt. Da føles det som om det er du som ikke strekker til.",
+        "Du trenger ikke kopiere oppsettet til en som har et helt team, når målet er dine første ti kunder."
+      ],
+      koster: "Du bruker energien på å bygge maskineri, og da blir det lite igjen til å snakke med kunder.",
+      droppe: [
+        ["Oppsett med mange steg", "Ett tilbud og en side holder lenge."],
+        ["Å poste hver dag overalt", "Velg en kanal, og bli der."],
+        ["Webinar, challenge og lansering samtidig", "Velg en måte å selge på dette kvartalet."]
+      ],
+      plan: [
+        ["Uke 1", "Skriv ned alt du tror du må ha på plass. Stryk alt som ikke hjelper deg å få neste kunde."],
+        ["Uke 2", "Velg ett tilbud og en kanal. Skriv tre innlegg som forklarer hvem du hjelper og hvordan."],
+        ["Uke 3 og 4", "Snakk med fem mennesker i målgruppen din."]
+      ]
+    },
     hopp: {
       navn: "Hoppefella",
-      kort: "Ny plattform, ny funnel, ny plan. Du bytter før noe rekker å virke.",
+      kort: "Ny plattform, ny plan. Du bytter før noe rekker å virke.",
       staar: [
-        "Du er kreativ og nysgjerrig, og du ser muligheter overalt. Så når noe ikke gir resultater etter tre uker, prøver du noe nytt. Ny contentplan. Ny funnel. Ny plattform. Ny AI-prompt.",
-        "Du er ikke useriøs. Ingen har hjulpet deg å se hva du trenger, og hva du trygt kan drite i. Da blir alt like viktig, og alt nytt ser bedre ut enn det du holder på med.",
-        "De fleste strategier virker hvis du holder ut lenge nok. Du trenger ikke enda en strategi. Du trenger å slutte å bytte strategi hver tredje uke."
+        "Du er kreativ og nysgjerrig, og du ser muligheter overalt. Så når noe ikke gir resultater etter tre uker, prøver du noe nytt.",
+        "Ingen har hjulpet deg å se hva du trenger, og hva du trygt kan droppe. Da blir alt like viktig.",
+        "De fleste strategier virker hvis du holder ut lenge nok."
       ],
-      koster: "Du starter på nytt igjen og igjen, og hver gang mister du det du hadde bygget. Du rekker aldri å se hva som ville fungert.",
+      koster: "Du starter på nytt igjen og igjen, og rekker aldri å se hva som ville fungert.",
       droppe: [
         ["Den nye plattformen alle snakker om", "Den du har, holder lenge nok til å finne ut av det."],
         ["Å måle resultater etter to uker", "Gi det 90 dager før du bestemmer deg."],
-        ["Alle nye ideer akkurat nå", "Skriv dem på en senere-liste. De forsvinner ikke."]
+        ["Alle nye ideer akkurat nå", "Skriv dem på en senere-liste."]
       ],
       plan: [
         ["Uke 1", "Skriv en plan for de neste 90 dagene. En plattform, ett tilbud, en kanal."],
-        ["Uke 2", "Lag en senere-liste for alle nye ideer, og lov deg selv å ikke røre den før 90 dager har gått."],
-        ["Uke 3 og 4", "Gjør det samme hver uke, og noter hva som skjer. Kjedelig er bra her."]
+        ["Uke 2", "Lag en senere-liste for alle nye ideer."],
+        ["Uke 3 og 4", "Gjør det samme hver uke, og noter hva som skjer."]
       ]
     }
   };
 
   var PLATTFORMER = {
     skool: {
-      navn: "Skool",
-      hvorfor: "Du vil bygge noe med mennesker i sentrum, og du vil bruke minst mulig tid på oppsett. Skool gir deg community, kurs og kalender på ett sted, og det er satt opp på en ettermiddag. Du trenger ikke nettside og ti verktøy rundt for å komme i gang.",
+      navn: "Skool og MailerLite",
+      hoved: "skool",
+      velg: "Skool til communityet, kursene, livesendingene og betalingen. MailerLite til email-listen din.",
+      hvorfor: "Du vil bygge noe med mennesker i sentrum, og du vil komme i gang uten ukesvis med oppsett. I Skool får du community, kurs, kalender, livesendinger og betaling på ett sted. MailerLite tar seg av email-listen, sånn at du har kontakt med folk også før de blir med.",
+      sum: "Fra 9 dollar i måneden, pluss et gebyr når du selger.",
+      verktoy: [
+        ["Community, kurs og betaling", "Skool", "Hobby koster 9 dollar i måneden, pluss 10 % av hvert salg. Pro koster 99 dollar i måneden, pluss 2,9 %. Skool viser bare priser i dollar.", [["Lag ditt eget community", LENKE.skool]]],
+        ["Email-liste og påmeldingsside", "MailerLite", "Gratis opp til 250 abonnenter. Deretter fra 12 dollar i måneden.", [["Lag en gratis konto", LENKE.mailerlite]]],
+        ["Livesendinger", "Innebygd i Skool", "Med i Skool, med opptak. Vil du heller bruke Google Meet eller Zoom, legger du lenken i kalenderen i Skool.", []],
+        CLAUDE
+      ],
       steg: [
         ["Lag communityet og gi det et navn folk forstår", "Skriv hvem det er for og hva de får hjelp med, rett i navnet eller undertittelen."],
         ["Skriv About-siden", "Tre korte avsnitt holder: hvem det er for, hva de får, og hva det koster. Legg inn et bilde eller en kort video av deg."],
-        ["Legg en enkel ting i Classroom", "En velkomstvideo og en leksjon som løser et lite problem. Du trenger ikke et helt kurs for å åpne dørene."]
-      ]
-    },
-    kajabi: {
-      navn: "Kajabi",
-      hvorfor: "Du har allerede noe å samle: en side, en liste og et produkt. Da gir det mening å ha alt på ett sted, og Kajabi er kraftig. Det er også dyrere, så sørg for at du bruker det du betaler for.",
-      steg: [
-        ["Start med ett produkt og ett tilbud", "Du trenger ikke fem kurs før du har solgt det første."],
-        ["Lag en landingsside med ett skjema", "Koble skjemaet til en kort velkomstmail. Det er hele funnelen du trenger i starten."],
-        ["Sett av en fast dag i uka", "Sjekk salg, nye kontakter og hva som ikke virker. Tjue minutter holder."]
+        ["Lag en påmeldingsside i MailerLite", "En enkel side der folk melder seg på listen din, og en velkomstmail som sender dem videre til Skool."]
+      ],
+      trengerIkke: [
+        ["Egen nettside", "Skool og en påmeldingsside i MailerLite holder lenge."],
+        ["Kajabi og andre store plattformer", "De passer når du har store kurs som selger. Det kan komme senere."],
+        ["Zoom-abonnement", "Skool har livesending innebygd, og Google Meet er gratis."]
       ]
     },
     enkel: {
       navn: "MailerLite og Stripe",
-      hvorfor: "Du trenger ikke en stor plattform ennå. Med MailerLite får du email-listen og siden din samlet på ett sted, gratis. Legg til en betalingslink fra Stripe, så holder det lenge når du selger timer eller ditt første produkt.",
+      hoved: "",
+      velg: "MailerLite til siden og email-listen din. Stripe til betalingen. Mer trenger du ikke nå.",
+      hvorfor: "Du selger timer, behandlinger eller noe lite, og da trenger du ikke en stor plattform. MailerLite gir deg en side og en email-liste gratis. Med en betalingslenke fra Stripe kan folk betale deg, uten nettbutikk.",
+      sum: "0 kr i måneden for å starte. Du betaler bare et gebyr når du selger.",
+      verktoy: [
+        ["Side, email-liste og påmelding", "MailerLite", "Gratis med en nettside, en landingsside og opp til 250 abonnenter.", [["Lag en gratis konto", LENKE.mailerlite]]],
+        ["Betaling", "Stripe", "Ingen fast månedspris. Du betaler et lite gebyr når noen kjøper.", []],
+        ["Møter og 1:1 på nett", "Google Meet eller Zoom", "Google Meet er gratis. Zoom har en gratisversjon som holder til korte møter.", []],
+        CLAUDE
+      ],
       steg: [
         ["Lag en gratis konto i MailerLite", "Der får du email-listen og siden din på ett sted. Ett verktøy, en innlogging."],
         ["Bygg siden din i MailerLite", "Si hvem du hjelper, hva du tilbyr og hvordan man kjøper. Legg inn et skjema koblet til en velkomstmail."],
-        ["Lag en betalingslink i Stripe", "Du trenger ingen nettbutikk. Legg linken på siden din, eller send den i en DM eller på email."]
+        ["Lag en betalingslenke i Stripe", "Du trenger ingen nettbutikk. Legg lenken på siden din, eller send den i en DM eller på email."]
+      ],
+      trengerIkke: [
+        ["En stor kursplattform", "Den trenger du først når du har kurs som skal selges til mange."],
+        ["Nettbutikk", "En betalingslenke gjør samme jobben for timer og små produkter."],
+        ["Betalte møte- og bookingverktøy", "Start med gratisversjonene. Bytt når de faktisk stopper deg."]
+      ]
+    },
+    kajabi: {
+      navn: "Kajabi",
+      hoved: "kajabi",
+      velg: "Kajabi, med kurs, nettside, email-liste og betaling samlet på ett sted.",
+      hvorfor: "Du vil ha alt samlet, og du har eller skal lage kurs du vil selge. I Kajabi har du kurs, nettside, email-liste og betaling i samme system, så du slipper å koble sammen flere verktøy. Kajabi er kraftig, og det koster mer, så sørg for at du bruker det du betaler for.",
+      sum: "Fra 143 dollar i måneden, med alt samlet.",
+      verktoy: [
+        KAJABI,
+        ["Livesendinger", "Google Meet eller Zoom", "Legg lenken inn i kurset eller communityet ditt i Kajabi. Google Meet er gratis.", []],
+        CLAUDE
+      ],
+      ekstra: "Starter du Kajabi via lenken min, får du også kurset mitt Kajabi gjort enkelt gratis, så lenge du har Kajabi via meg.",
+      steg: [
+        ["Start med ett produkt og ett tilbud", "Du trenger ikke fem kurs før du har solgt det første."],
+        ["Lag en landingsside med ett skjema", "Koble skjemaet til en kort velkomstmail. Mer trenger du ikke i starten."],
+        ["Sett av en fast dag i uka", "Sjekk salg, nye kontakter og hva som ikke virker. Tjue minutter holder."]
+      ],
+      trengerIkke: [
+        ["MailerLite eller Mailchimp ved siden av", "Email-listen ligger i Kajabi."],
+        ["En egen nettside på Wix eller WordPress", "Kajabi har nettside. To steder å oppdatere er to steder noe kan gå galt."],
+        ["Den største planen", "Start på Basic. Oppgrader når du faktisk trenger mer."]
+      ]
+    },
+    stor: {
+      navn: "Kajabi eller GoHighLevel, med WebinarFuel",
+      hoved: "kajabi",
+      velg: "En stor plattform til kursene og emailene dine, og WebinarFuel til webinarer som går av seg selv.",
+      hvorfor: "Du vil selge store kurs og ha webinarer som går automatisk. Da trenger du en plattform som tåler mye, og et eget verktøy for automatiske webinarer. Kajabi er enklest å komme i gang med. GoHighLevel gir deg mer automatikk, men krever mer oppsett.",
+      sum: "Fra rundt 100 dollar i måneden, pluss webinarverktøyet.",
+      verktoy: [
+        KAJABI,
+        ["Alternativ med mer automatikk", "GoHighLevel", "Starter koster 97 dollar i måneden. Mer å sette opp selv.", []],
+        ["Webinarer som går av seg selv", "WebinarFuel", "Prisen får du hos WebinarFuel.", []],
+        CLAUDE
+      ],
+      ekstra: "Starter du Kajabi via lenken min, får du også kurset mitt Kajabi gjort enkelt gratis, så lenge du har Kajabi via meg.",
+      hjelp: true,
+      steg: [
+        ["Få kurset til å selge live først", "Automatiske webinarer virker best når du vet hva som får folk til å kjøpe. Kjør webinaret live noen ganger først."],
+        ["Velg en plattform og bli der", "Kajabi eller GoHighLevel, ikke begge. Samle alt på samme sted."],
+        ["Sett webinaret til å gå automatisk", "Bruk opptaket fra det beste live-webinaret ditt, og koble det til påmelding og oppfølgingsmailer."]
+      ],
+      trengerIkke: [
+        ["Flere plattformer som gjør det samme", "En plattform til alt, pluss webinarverktøyet."],
+        ["Automatikk før du har salg", "Selg live først. Gjør det automatisk når du vet hva som virker."],
+        ["Å bygge alt alene", "Dette er det største oppsettet. Få hjelp, så det virker første gang."]
       ]
     }
   };
 
+  var FAG = ["er coach eller terapeut", "jobber med yoga, kropp eller pust", "jobber med healing eller intuitivt arbeid", "jobber kreativt", "har kunnskap du vil dele"];
+  var SEL = ["et community", "kurs", "webinarer og workshops", "timer og 1:1 på nett", "store kurs og webinarer som går av seg selv"];
   var FASER = [
     ["Du har ikke startet ennå", "Og det er en fordel. Du kan bygge enkelt fra første dag, uten å rydde opp i noe."],
     ["Du har holdt på under ett år", "Nå legges vanene. Det du velger å droppe nå, slipper du å rydde opp i senere."],
@@ -331,21 +482,37 @@
 
   var F = FELLER[f], P = PLATTFORMER[p], F2 = FELLER[q.get("f2")];
   var navn = (q.get("n") || "").trim().slice(0, 40);
-  var s = int("s", 0, 3, 1), t = int("t", 0, 3, 1), v = int("v", 0, 3, 0), k = int("k", 0, 100, 50);
+  var t = int("t", 0, 3, 1), v = int("v", 0, 3, 0), k = int("k", 0, 100, 50), d = int("d", 0, 2, 0);
+  var har = q.get("har") || "";
+  var harFag = q.has("fag"), fag = int("fag", 0, 4, 4), sel = int("sel", 0, 4, 1);
   var nivaa = k < 40 ? "Litt rot" : k < 70 ? "Merkbart kaos" : "Fullt kaos";
 
-  document.title = "Tech-sjekken din: " + F.navn + " | Mathilde Junge";
+  function harRaad() {
+    var tekst = "";
+    if (har === "ingen") tekst = "Du starter med blanke ark, og det er en fordel. Du kan bygge enkelt fra første dag, uten å rydde opp i noe.";
+    else if (har && har === P.hoved) tekst = "Du har allerede " + (har === "skool" ? "Skool" : "Kajabi") + ". Bli der. Det handler om å bruke det du har, ikke om å bytte.";
+    else if (har === "kajabi") tekst = "Du har Kajabi i dag, og du må ikke bytte. Men bruker du bare noen få ting i Kajabi, og prisen svir, kan forslaget ditt gjøre samme jobben for mye mindre. Bytt i så fall i en rolig periode.";
+    else if (har === "skool" && p === "enkel") tekst = "Du har Skool i dag. Bli der med det du har, og bruk MailerLite til email-listen. Stripe trenger du bare hvis du selger timer utenfor Skool.";
+    else if (har === "skool") tekst = "Du har Skool i dag. Communityet kan godt bli der. Flytt bare de store kursene når de trenger mer enn Skool gir deg.";
+    else if (har === "nettside" && P.hoved === "kajabi") tekst = "Nettsiden din kan bli stående til Kajabi er oppe. Flytt den til slutt, og si opp den gamle etterpå.";
+    else if (har === "nettside") tekst = "Behold nettsiden din, du trenger ikke flytte den. Legg til verktøyene i forslaget ved siden av, og lenk til dem fra nettsiden.";
+    else if (har === "annet") tekst = "Virker det du har, og skjønner du det? Da kan du godt bli der. Bytt bare hvis du står fast i det hver uke.";
+    if (d === 2) tekst += har === "ingen" ? " Du har en dato om under en måned, så velg det enkleste i forslaget, og vent med resten." : " Du har en dato om under en måned. Ikke bytt noe nå. Bruk det du har, og ta endringene etterpå.";
+    return tekst.trim();
+  }
+
+  document.title = "Tech-sjekken din: " + P.navn + " | Mathilde Junge";
 
   // 1. Toppen
   var topp = el("section", "topp"); var r1 = el("div", "ramme"); topp.appendChild(r1);
   var venstre = el("div");
   venstre.appendChild(el("p", "etikett", "Tech-sjekken din"));
-  var h1 = el("h1"); h1.appendChild(document.createTextNode((navn ? navn + ", du" : "Du") + " sitter i "));
-  h1.appendChild(el("span", "felle", F.navn)); h1.appendChild(document.createTextNode("."));
+  var h1 = el("h1"); h1.appendChild(document.createTextNode((navn ? navn + ", dette" : "Dette") + " er verktøyene du bør velge: "));
+  h1.appendChild(el("span", "felle", P.navn)); h1.appendChild(document.createTextNode("."));
   venstre.appendChild(h1);
-  venstre.appendChild(el("p", "kort", F.kort));
+  if (harFag) venstre.appendChild(el("p", "kort", "For deg som " + FAG[fag] + ", og vil selge " + SEL[sel] + " på nett."));
   var brikker = el("div", "brikker");
-  [["Plattform: ", P.navn], ["Kaosmåler: ", k + " av 100"]].concat(F2 ? [["Litt ", F2.navn + " også"]] : []).forEach(function (b) {
+  [["Fella di: ", F.navn], ["Kaosmåler: ", k + " av 100"]].concat(F2 && F2 !== F ? [["Litt ", F2.navn + " også"]] : []).forEach(function (b) {
     var x = el("span", "brikke"); x.appendChild(document.createTextNode(b[0])); x.appendChild(el("b", "", b[1])); brikker.appendChild(x);
   });
   venstre.appendChild(brikker);
@@ -361,36 +528,93 @@
   main.appendChild(topp);
   requestAnimationFrame(function () { requestAnimationFrame(function () { fyll.style.width = k + "%"; }); });
 
-  // 2. Hvor du står
+  // 2. Verktøyvalget
+  var pf = el("section", "plattform"); var r5 = el("div", "ramme"); pf.appendChild(r5);
+  var velg = el("div", "velg");
+  velg.appendChild(el("p", "etikett", "Mitt forslag til deg"));
+  velg.appendChild(el("h2", "", P.navn));
+  velg.appendChild(el("p", "velg-tekst", P.velg));
+  velg.appendChild(el("p", "velg-sum", P.sum));
+  var raad = harRaad();
+  if (raad) { var hr = el("p", "velg-har"); hr.appendChild(el("b", "", "Utgangspunktet ditt: ")); hr.appendChild(document.createTextNode(raad)); velg.appendChild(hr); }
+  r5.appendChild(velg);
+  r5.appendChild(el("p", "hvorfor", P.hvorfor));
+
+  r5.appendChild(el("h3", "under", "Verktøykassen din"));
+  var kasse = el("div", "kasse");
+  P.verktoy.forEach(function (x) {
+    var rad = el("div", "kasse-rad");
+    var a = el("div"); a.appendChild(el("p", "kasse-hva", x[0])); a.appendChild(el("p", "kasse-navn", x[1]));
+    var b = el("div"); b.appendChild(el("p", "kasse-pris", x[2]));
+    if (x[3].length) { var lk = el("div", "kasse-lenker"); x[3].forEach(function (l) { var al = el("a", "knapp knapp-strek liten", l[0] + " →"); al.href = l[1]; al.target = "_blank"; al.rel = "noopener sponsored"; lk.appendChild(al); }); b.appendChild(lk); }
+    rad.appendChild(a); rad.appendChild(b); kasse.appendChild(rad);
+  });
+  r5.appendChild(kasse);
+  r5.appendChild(el("p", "ogsaa", "Prisene er sjekket i november 2026 og kan endre seg. Lenkene er affiliate-lenkene mine. Jeg får en liten slant hvis du blir kunde, og det koster deg ingenting ekstra." + (P.ekstra ? " " + P.ekstra : "")));
+
+  r5.appendChild(el("h3", "under", "Slik setter du det opp"));
+  var op = el("ol", "oppskrift");
+  P.steg.forEach(function (x) { var li = el("li"); var dv = el("div"); dv.appendChild(el("b", "", x[0])); dv.appendChild(el("span", "", x[1])); li.appendChild(dv); op.appendChild(li); });
+  r5.appendChild(op);
+
+  r5.appendChild(el("h3", "under", "Dette trenger du ikke nå"));
+  var tl2 = el("ul", "droppliste");
+  P.trengerIkke.forEach(function (x) { var li = el("li"); li.appendChild(el("span", "kryss", "✕")); var dv = el("div"); dv.appendChild(el("span", "ting", x[0])); dv.appendChild(el("span", "hvorfor", x[1])); li.appendChild(dv); tl2.appendChild(li); });
+  r5.appendChild(tl2);
+  if (P.hjelp) {
+    var hj = el("div", "hjelp");
+    hj.appendChild(el("p", "", "Vil du ha hjelp til et så stort oppsett? Jeg tar noen få lanseringsoppsett ved siden av communityet. Fortell meg hva du skal bygge, så finner vi ut om det passer."));
+    var ha = el("a", "knapp knapp-rosa", "Book en gratis kartleggingssamtale →"); ha.href = "index.html#kontakt"; hj.appendChild(ha);
+    r5.appendChild(hj);
+  }
+  main.appendChild(pf);
+
+  // 3. Hvis hun har en dato
+  if (d > 0) {
+    var dt = el("section", "dato"); var rd = el("div", "ramme"); dt.appendChild(rd);
+    rd.appendChild(el("p", "etikett", "Før datoen din"));
+    rd.appendChild(el("h2", "", d === 2 ? "Du har en dato om under en måned." : "Du har en dato i kalenderen."));
+    rd.appendChild(el("p", "dato-intro", "Da er dette viktigere enn alt annet på denne siden:"));
+    var dl0 = el("ol", "oppskrift");
+    [["Gå hele veien selv en uke før", "Meld deg på, få mailen, klikk på lenken og betal. Akkurat som kunden din."],
+     ["Kjør en prøvesending", "Be en venn bli med på en test, så du vet hvor chatten, opptaket og skjermdelingen er."],
+     ["Ha en plan B klar", "En ekstra lenke til Google Meet eller Zoom, og en kort melding du kan sende hvis noe svikter."]].forEach(function (x) {
+      var li = el("li"); var dv = el("div"); dv.appendChild(el("b", "", x[0])); dv.appendChild(el("span", "", x[1])); li.appendChild(dv); dl0.appendChild(li);
+    });
+    rd.appendChild(dl0);
+    main.appendChild(dt);
+  }
+
+  // 4. Fella
   var staar = el("section", "staar"); var r2 = el("div", "ramme"); staar.appendChild(r2);
-  var sv = el("div"); sv.appendChild(el("p", "etikett", "Hvor du står")); sv.appendChild(el("h2", "", "Dette er " + F.navn.toLowerCase() + ".")); sv.lastChild.style.marginTop = "12px";
+  var sv = el("div"); sv.appendChild(el("p", "etikett", "Fella du sitter i")); var h2f = el("h2", "", "Dette er " + F.navn.toLowerCase() + "."); h2f.style.marginTop = "12px"; sv.appendChild(h2f); sv.appendChild(el("p", "kort-felle", F.kort));
   r2.appendChild(sv);
   var tekst = el("div", "tekst"); F.staar.forEach(function (x) { tekst.appendChild(el("p", "", x)); });
-  var fase = el("p", "fase"); fase.appendChild(el("b", "", FASER[s][0] + ". ")); fase.appendChild(document.createTextNode(FASER[s][1])); tekst.appendChild(fase);
+  if (q.has("s")) { var s = int("s", 0, 3, 1); var fase = el("p", "fase"); fase.appendChild(el("b", "", FASER[s][0] + ". ")); fase.appendChild(document.createTextNode(FASER[s][1])); tekst.appendChild(fase); }
   r2.appendChild(tekst);
   main.appendChild(staar);
 
-  // 3. Hva det koster deg
+  // 5. Hva det koster deg
   var timerAar = TIMER_UKE[t] * 46, uker = timerAar / 37.5, krAar = KR_MND[v] * 12;
   var kost = el("section", "koster"); var r3 = el("div", "ramme"); kost.appendChild(r3);
   r3.appendChild(el("p", "etikett", "Hva det koster deg"));
   r3.appendChild(el("h2", "", "Kaos koster. Her er regnestykket ditt."));
   var rad = el("div", "tallrad");
-  [[tall(timerAar), "timer på tech i løpet av et år"],
+  [[tall(timerAar), "timer på det tekniske i løpet av et år"],
    [uker < 1 ? "under 1" : tall(uker), uker < 1.5 ? "arbeidsuke med full jobb" : "arbeidsuker med full jobb"],
-   [krAar ? "ca. " + tall(krAar) + " kr" : "0 kr", "på verktøy og plattformer i året"]].forEach(function (x) {
-    var d = el("div"); d.appendChild(el("p", "stort", x[0])); d.appendChild(el("p", "hva", x[1])); rad.appendChild(d);
+   [krAar ? "ca. " + tall(krAar) + " kr" : "0 kr", "på verktøy og tech-hjelp i året"]].forEach(function (x) {
+    var dv = el("div"); dv.appendChild(el("p", "stort", x[0])); dv.appendChild(el("p", "hva", x[1])); rad.appendChild(dv);
   });
   r3.appendChild(rad);
-  r3.appendChild(el("p", "setning", t === 0 ? "Du bruker lite tid på tech, og det er bra. Pass bare på at det ikke er fordi du har lagt det du trenger å få på plass til side. " + F.koster : F.koster));
+  r3.appendChild(el("p", "setning", t === 0 ? "Du bruker lite tid på det tekniske, og det er bra. Pass bare på at det ikke er fordi du har lagt det du trenger å få på plass til side. " + F.koster : F.koster));
   r3.appendChild(el("p", "regnestykke", "Regnestykket bygger på svarene dine: rundt " + String(TIMER_UKE[t]).replace(".", ",") + " timer i uka i 46 arbeidsuker, og en arbeidsuke på 37,5 timer."));
   main.appendChild(kost);
 
-  // 4. Droppe + plan
+  // 6. Droppe + plan
   var to = el("section", "toveis"); var r4 = el("div", "ramme"); to.appendChild(r4);
   var b1 = el("div", "kort-boks"); b1.appendChild(el("p", "etikett", "Gi deg selv lov")); b1.appendChild(el("h2", "", "Dette kan du trygt droppe"));
   var dl = el("ul", "droppliste");
-  F.droppe.forEach(function (x) { var li = el("li"); li.appendChild(el("span", "kryss", "✕")); var d = el("div"); d.appendChild(el("span", "ting", x[0])); d.appendChild(el("span", "hvorfor", x[1])); li.appendChild(d); dl.appendChild(li); });
+  F.droppe.forEach(function (x) { var li = el("li"); li.appendChild(el("span", "kryss", "✕")); var dv = el("div"); dv.appendChild(el("span", "ting", x[0])); dv.appendChild(el("span", "hvorfor", x[1])); li.appendChild(dv); dl.appendChild(li); });
   b1.appendChild(dl); r4.appendChild(b1);
   var b2 = el("div", "kort-boks"); b2.appendChild(el("p", "etikett", "Hvis jeg var deg")); b2.appendChild(el("h2", "", "De neste 30 dagene"));
   var pl = el("ol", "planliste");
@@ -398,30 +622,20 @@
   b2.appendChild(pl); r4.appendChild(b2);
   main.appendChild(to);
 
-  // 5. Plattform
-  var pf = el("section", "plattform"); var r5 = el("div", "ramme"); pf.appendChild(r5);
-  r5.appendChild(el("p", "etikett", "Plattformen som passer deg nå"));
-  var h2p = el("h2"); h2p.appendChild(document.createTextNode("Mitt forslag: ")); h2p.appendChild(el("span", "navn", P.navn)); h2p.style.marginTop = "12px"; r5.appendChild(h2p);
-  r5.appendChild(el("p", "hvorfor", P.hvorfor));
-  var op = el("ol", "oppskrift");
-  P.steg.forEach(function (x) { var li = el("li"); var d = el("div"); d.appendChild(el("b", "", x[0])); d.appendChild(el("span", "", x[1])); li.appendChild(d); op.appendChild(li); });
-  r5.appendChild(op);
-  r5.appendChild(el("p", "ogsaa", "Du trenger ikke den dyreste plattformen fordi guruen din bruker den. Du trenger den enkleste som gjør jobben for deg akkurat nå. Oppskriften er også på vei til innboksen din."));
-  main.appendChild(pf);
-
-  // 6. Tech uten Kaos
+  // 7. Tech uten Kaos
   var tuk = el("section", "tuk");
   tuk.innerHTML = '<div class="ramme"><figure class="bue"><img src="bilder/mathilde-kaos.jpg" alt="Mathilde ved en skjerm full av åpne vinduer, med telefonen mot øret" width="1120" height="1400" loading="lazy"><span class="ai-merke">AI-bilde av meg</span></figure>' +
-    '<div><p class="etikett">Neste steg, hvis du vil</p><h2>Kom deg ut av fella i Tech uten <span class="kaos">Kaos</span>.</h2>' +
+    '<div><p class="etikett">Neste steg, hvis du vil</p><h2>Få hjelp til oppsettet i Tech uten <span class="kaos">Kaos</span>.</h2>' +
     '<p class="tekst"></p>' +
-    '<ul><li>Tech Timen hver uke, der vi løser det du står fast i</li><li>Hjelp når du står fast, med skjermbilder og uten fagspråk</li><li>Kurs i det du trenger nå, og opptak av alt</li></ul>' +
-    '<div class="knapperad"><a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about">Bli med i Tech uten Kaos →</a><span class="pris">Standard 15 dollar i måneden. Premium med full tilgang 69 dollar i måneden (Skool viser foreløpig bare priser i dollar).</span></div></div></div>';
-  tuk.querySelector("p.tekst").textContent = "Du trenger ikke enda et kurs for å komme deg ut av " + F.navn.toLowerCase() + ". Du trenger et sted der du kan spørre om det du står fast i akkurat nå, og få svar fra noen som kjenner plattformen din. Det er det Tech uten Kaos er laget for.";
+    '<ul><li>Tech Timen hver uke, der vi løser det du står fast i</li><li>Hjelp med ' + "" + '<span class="vk"></span>, steg for steg og uten fagspråk</li><li>Kurs i det du trenger nå, og opptak av alt</li></ul>' +
+    '<div class="knapperad"><a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about">Bli med i Tech uten Kaos →</a><span class="pris">Standard 15 dollar i måneden. Premium med full tilgang til meg 69 dollar i måneden. Skool viser foreløpig bare priser i dollar.</span></div></div></div>';
+  tuk.querySelector("p.tekst").textContent = "Du har fått forslaget. Nå skal det settes opp, og det er der mange blir sittende fast. Inne i Tech uten Kaos tar vi det steg for steg, og du kan spørre om det samme så mange ganger du trenger.";
+  tuk.querySelector(".vk").textContent = P.navn;
   main.appendChild(tuk);
 
-  // 7. Hilsen
+  // 8. Hilsen
   var hil = el("section", "hilsen"); var r7 = el("div", "ramme"); hil.appendChild(r7);
-  r7.appendChild(el("p", "", "Du er ikke alene om å sitte i " + F.navn.toLowerCase() + ". De fleste flinke gründere jeg møter, har vært der. Det betyr at veien ut finnes, og at den er enklere enn du tror."));
+  r7.appendChild(el("p", "", "Du er ikke alene om å sitte i " + F.navn.toLowerCase() + ". Mange flinke gründere jeg møter, har vært der. Det betyr at veien ut finnes, og at den ofte er enklere enn du tror."));
   r7.appendChild(el("p", "hand", "Klem fra Mathilde 🤗"));
   var lenker = el("div", "lenker");
   var a1 = el("a", "knapp knapp-strek", "Ta sjekken på nytt"); a1.href = "index.html#quiz"; lenker.appendChild(a1);

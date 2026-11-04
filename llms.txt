@@ -14,7 +14,7 @@ Mathilde Junge driver Mathilde Junge AS (org.nr. 934 428 374). Hun har jobbet so
 ## Tilbud
 - [Tech uten Kaos](https://www.skool.com/mathilde/about): community på Skool med ukentlig Tech Time, kurs, opptak og hjelp når man står fast. Standard 15 dollar per måned, Premium med full tilgang 69 dollar per måned.
 - Teknisk hjelp og rådgivning: et begrenset antall større oppsett og prosjekter, via kontaktskjemaet på nettsiden.
-- [Tech-sjekken](https://www.mathilde-junge.no/#quiz): gratis test som viser hvilken tech-felle en gründer sitter i, hva den koster i tid og penger, og hvilken plattform som passer nå.
+- [Tech-sjekken](https://www.mathilde-junge.no/#quiz): gratis test som viser hvilke verktøy en gründer bør velge og hva de koster, hva hun trygt kan droppe, og hvilken tech-felle hun sitter i.
 
 ## Lenker
 - [Hjemmeside](https://www.mathilde-junge.no/)
