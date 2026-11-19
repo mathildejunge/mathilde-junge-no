@@ -1,0 +1,156 @@
+:root{--rosa:#ff66c4;--rosa-dyp:#d6339b;--rosa-lys:#ffe3f3;--svart:#0d0b0c;--kull:#1c1719;--hvit:#fff;--grunn:#fdf8f9;--dempet:#6b5d63;--linje:#ecdfe4;--rosegull:#e0a98f;
+--display:"Unbounded","Arial Black",system-ui,sans-serif;--brod:"Figtree",system-ui,sans-serif;--hand:"Caveat",cursive}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--brod);font-size:18px;line-height:1.6;color:var(--kull);background:var(--hvit)}
+img{max-width:100%;display:block}
+a{color:var(--rosa-dyp)}
+.ramme{max-width:1120px;margin:0 auto;padding:0 22px}
+section{padding:72px 0}
+.grunn{background:var(--grunn)}
+.mork{background:var(--svart);color:#f6eef2}
+h1,h2,h3{font-family:var(--display);color:var(--svart);line-height:1.18;letter-spacing:-.02em}
+.mork h2,.mork h3{color:#fff}
+h1{font-size:clamp(1.75rem,5.4vw,3rem);font-weight:700}
+h2{font-size:clamp(1.4rem,3.8vw,2.15rem);font-weight:600;max-width:24ch}
+h3{font-size:1.02rem;font-weight:600}
+.etikett{font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rosa-dyp);margin-bottom:14px}
+.mork .etikett{color:var(--rosa)}
+.tekst{max-width:62ch}
+.tekst p+p{margin-top:16px}
+.knapper{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.knapp{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:999px;font-weight:700;text-decoration:none;font-size:1rem;transition:background .2s}
+.knapp-rosa{background:var(--rosa);color:var(--svart)}
+.knapp-rosa:hover{background:var(--rosa-dyp);color:#fff}
+.knapp-strek{border:1.5px solid var(--svart);color:var(--svart);background:#fff}
+.mork .knapp-strek{border-color:#fff;color:#fff;background:transparent}
+.tekstlink{font-weight:600;color:var(--rosa-dyp)}
+.mork .tekstlink{color:var(--rosa)}
+.liten{font-size:.88rem;color:var(--dempet)}
+.mork .liten{color:#c9b9c1}
+/* meny */
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linje)}
+.meny{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--svart);text-decoration:none}
+.logo span{color:var(--rosa)}
+.lenker{display:none;gap:26px}
+.lenker a{color:var(--kull);text-decoration:none;font-weight:500;font-size:.95rem}
+.meny .knapp{min-height:42px;padding:0 18px;font-size:.92rem}
+@media(min-width:860px){.lenker{display:flex}}
+/* topp */
+.topp{padding:48px 0 64px}
+.topp .rad{display:grid;gap:36px;align-items:center}
+.undertittel{font-size:1.15rem;margin-top:20px;max-width:46ch}
+.tillit{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;font-size:.88rem;color:var(--dempet)}
+.tillit span::before{content:"♡ ";color:var(--rosa)}
+.bilde{background:var(--rosa-lys);border-radius:28px;padding:18px;position:relative}
+.bilde img{width:100%;height:auto;border-radius:18px}
+.ai{position:absolute;left:30px;bottom:30px;background:#fff;border-radius:999px;padding:4px 12px;font-size:.75rem;font-weight:600;color:var(--dempet)}
+@media(min-width:860px){.topp .rad{grid-template-columns:1.2fr .8fr}}
+/* kjenner */
+.tanker{display:grid;gap:16px;margin:34px 0}
+.tanke{background:#fff;border:1px solid var(--linje);border-radius:18px;padding:20px 22px}
+.tanke .kl{font-family:var(--hand);font-size:1.5rem;color:var(--rosa-dyp);line-height:1}
+.tanke p{margin-top:8px;font-style:italic}
+@media(min-width:860px){.tanker{grid-template-columns:repeat(3,1fr)}}
+.alene{font-family:var(--display);font-weight:600;font-size:1.15rem;margin-top:28px;color:var(--svart)}
+/* premium */
+.kort3{display:grid;gap:16px;margin:34px 0}
+.kort{border:1px solid #3a3035;border-radius:18px;padding:22px}
+.kort h3{font-size:1.08rem;margin-bottom:6px}
+.kort h3::before{content:"♡ ";color:var(--rosa)}
+@media(min-width:860px){.kort3{grid-template-columns:repeat(3,1fr)}}
+.pris{border-top:1px solid #3a3035;padding-top:24px;max-width:62ch}
+.pris strong{font-family:var(--display);font-weight:600;font-size:1.25rem;color:#fff;display:block;margin-bottom:6px}
+/* sitater */
+.sitater{display:grid;gap:18px;margin-top:34px}
+.sitat{background:var(--rosa-lys);border-radius:20px;padding:24px}
+.sitat blockquote{font-size:1.05rem}
+.sitat .hvem{display:flex;align-items:center;gap:12px;margin-top:16px;font-weight:700;font-size:.95rem}
+.sitat .hvem img{width:44px;height:44px;border-radius:50%}
+.sitat .hvem small{display:block;font-weight:400;color:var(--dempet)}
+@media(min-width:860px){.sitater{grid-template-columns:repeat(2,1fr)}}
+/* tech-sjekken */
+.sjekk{background:var(--rosa-lys);border-radius:28px;padding:40px 26px;text-align:center}
+.sjekk h2{margin:0 auto}
+.sjekk .tekst{margin:18px auto 0}
+.sjekk .knapper{justify-content:center}
+/* 1:1 */
+.to{display:grid;gap:18px;margin-top:30px}
+.boks{background:#fff;border:1px solid var(--linje);border-radius:20px;padding:24px}
+.boks h3{margin-bottom:8px}
+@media(min-width:860px){.to{grid-template-columns:repeat(2,1fr)}}
+/* om */
+.om .rad{display:grid;gap:36px;align-items:center}
+@media(min-width:860px){.om .rad{grid-template-columns:.8fr 1.2fr}}
+.tidslinje{list-style:none;margin-top:24px;border-left:2px solid var(--rosegull);padding-left:18px}
+.tidslinje li{margin-bottom:8px;font-size:.98rem}
+.tidslinje b{font-family:var(--display);margin-right:8px}
+/* slutt */
+.slutt{text-align:center}
+.slutt .hand{font-family:var(--hand);font-size:clamp(1.7rem,4.5vw,2.3rem);line-height:1.25;max-width:30ch;margin:0 auto;color:var(--svart)}
+.slutt .sign{font-family:var(--hand);font-size:1.6rem;color:var(--rosa-dyp);margin-top:12px}
+.slutt .knapper{justify-content:center}
+footer{background:var(--svart);color:#c9b9c1;padding:40px 0;font-size:.88rem}
+footer p+p{margin-top:6px}
+.add{background:#fff3c4;color:#5b4a00;padding:0 6px;border-radius:6px;font-size:.85em}
+.proto{background:var(--svart);color:#fff;text-align:center;font-size:.8rem;padding:6px}
+
+.sidetopp{padding:48px 0 56px}
+.sidetopp .undertittel{max-width:52ch}
+table.sammenlign{width:100%;border-collapse:collapse;margin-top:28px;font-size:.98rem;background:#fff;border-radius:18px;overflow:hidden}
+.sammenlign th,.sammenlign td{padding:14px 16px;border-bottom:1px solid var(--linje);text-align:left;vertical-align:top}
+.sammenlign th{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--svart)}
+.sammenlign td.ja{color:var(--rosa-dyp);font-weight:700}
+.sammenlign .prem{background:var(--rosa-lys)}
+.liste{list-style:none;margin-top:18px}
+.liste li{padding-left:24px;position:relative;margin-bottom:8px}
+.liste li::before{content:"♡";position:absolute;left:0;color:var(--rosa)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chips span{background:#fff;border:1px solid var(--linje);border-radius:999px;padding:6px 14px;font-size:.92rem}
+.faq{margin-top:26px;display:grid;gap:12px;max-width:760px}
+.faq details{background:#fff;border:1px solid var(--linje);border-radius:16px;padding:16px 20px}
+.faq summary{cursor:pointer;font-weight:700}
+.faq p{margin-top:10px}
+.vilkar{font-size:.9rem;color:var(--dempet);margin-top:16px;max-width:66ch}
+.prosjekter{display:grid;gap:14px;margin-top:26px}
+.prosjekt{background:#fff;border:1px solid var(--linje);border-radius:18px;padding:20px 22px;display:grid;gap:6px}
+.prosjekt .belop{font-family:var(--display);font-weight:600;color:var(--svart)}
+@media(min-width:860px){.prosjekt{grid-template-columns:1fr 2fr auto;align-items:start;gap:20px}}
+form.skjema{display:grid;gap:14px;margin-top:26px;max-width:560px}
+.skjema label{font-weight:600;font-size:.95rem;display:grid;gap:6px}
+.skjema input,.skjema textarea,.skjema select{font:inherit;padding:12px 14px;border:1.5px solid var(--linje);border-radius:12px;background:#fff}
+.skjema textarea{min-height:110px}
+.sendt{display:none;background:var(--rosa-lys);border-radius:16px;padding:18px;margin-top:16px;font-weight:600}
+.vegg{display:grid;gap:16px;margin-top:26px}
+@media(min-width:860px){.vegg{grid-template-columns:repeat(2,1fr)}}
+.gruppe{font-family:var(--display);font-weight:600;font-size:1.05rem;margin-top:40px;color:var(--svart)}
+.presse{list-style:none;margin-top:16px}
+.presse li{margin-bottom:10px}
+.verdier{display:grid;gap:14px;margin-top:24px}
+@media(min-width:860px){.verdier{grid-template-columns:repeat(3,1fr)}}
+.lenker a.aktiv{color:var(--rosa-dyp);font-weight:700}
+:root{--tekst:var(--kull)}
+.proto{display:none}
+/* Tech-sjekken (quiz) */
+.sjekk .quiz{max-width:680px;margin:30px auto 0;text-align:left;background:#fff;border:1.5px solid var(--svart);border-radius:24px;padding:clamp(20px,3vw,32px);box-shadow:6px 6px 0 var(--rosa)}
+.quiz-fremdrift{display:flex;gap:6px;margin-bottom:20px}
+.quiz-fremdrift span{height:6px;flex:1;border-radius:99px;background:var(--linje)}
+.quiz-fremdrift span.ferdig{background:var(--rosa)}
+.quiz-sporsmal{font-family:var(--display);font-weight:600;font-size:1.15rem;line-height:1.3;margin-bottom:18px;color:var(--svart)}
+.quiz-nr{font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dempet);margin-bottom:6px}
+.svar{display:grid;gap:10px}
+.svar button{text-align:left;font:inherit;font-size:1rem;font-weight:500;background:#fff;color:var(--kull);border:1.5px solid var(--linje);border-radius:14px;padding:14px 18px;cursor:pointer;transition:border-color .15s,background .15s}
+.svar button:hover{border-color:var(--rosa);background:var(--rosa-lys)}
+.port-tekst{color:var(--dempet);margin-bottom:4px}
+.quiz-skjema{display:grid;gap:14px;margin-top:14px;justify-items:start}
+.epost-rad{display:flex;gap:10px;flex-wrap:wrap;width:100%}
+.epost-rad input{flex:1 1 220px;min-width:0;font:inherit;padding:13px 16px;border-radius:999px;border:1.5px solid var(--svart);background:#fff}
+.quiz-skjema .knapp{border:0;cursor:pointer}
+.quiz-skjema .knapp:disabled{opacity:.7;cursor:wait}
+.samtykke{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--dempet);line-height:1.45;cursor:pointer}
+.samtykke input[type=checkbox]{accent-color:var(--rosa-dyp);width:18px;height:18px;margin-top:2px;flex:none}
+.skjult{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lenkeknapp{background:none;border:0;font:inherit;font-size:.92rem;color:var(--dempet);text-decoration:underline;cursor:pointer;margin-top:14px;padding:0}
+.footlenker{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:10px}
+.footlenker a{color:#f6eef2}

@@ -1,26 +1,17 @@
 # Mathilde Junge
 
-> Kajabi-ekspert fra Stord i Norge. Hjelper norske gründere med teknisk hjelp, AI som Claude, automatisering og med å bygge en enkel online business de forstår og kan styre selv.
+> Kajabi-ekspert fra Stord i Norge. Hjelper norske gründere med Kajabi, Skool, MailerLite og AI som Claude, sånn at de forstår og kan styre sin egen online business selv.
 
-Mathilde Junge driver Mathilde Junge AS (org.nr. 934 428 374). Hun har jobbet i Kajabi siden 2023, og har jobbet med noen av Norges største onlinegründere, og har tidligere drevet fysisk butikk og vært kjøpmann på Rema 1000.
+Mathilde Junge driver Mathilde Junge AS (org.nr. 934 428 374). Hun har drevet egen business siden 2006, har jobbet i Kajabi siden 2023, og har jobbet med noen av Norges største onlinegründere.
 
-## Hva hun hjelper med
-- Kajabi: kurs og medlemsportaler, salgssider, email-sekvenser, automatiseringer, betaling, lanseringer og webinarer
-- Skool: oppsett av community, classroom og medlemskap
-- AI i praksis for små online businesser
-- Automatisering med ManyChat, email-flyter og integrasjoner
-- Enkle oppsett med MailerLite og Stripe for dem som starter
-
-## Tilbud
-- [Tech uten Kaos](https://www.skool.com/mathilde/about): community på Skool med ukentlig Tech Time, kurs, opptak og hjelp når man står fast. Standard 15 dollar per måned, Premium med full tilgang 69 dollar per måned.
-- Teknisk hjelp og rådgivning: et begrenset antall større oppsett og prosjekter, via kontaktskjemaet på nettsiden.
-- [Tech-sjekken](https://www.mathilde-junge.no/#quiz): gratis test som viser hvilke verktøy en gründer bør velge og hva de koster, hva hun trygt kan droppe, og hvilken tech-felle hun sitter i.
-
-## Lenker
-- [Hjemmeside](https://www.mathilde-junge.no/)
-- [Ofte stilte spørsmål](https://www.mathilde-junge.no/#faq)
-- [Instagram](https://www.instagram.com/mathildejunge.tech/)
-- [Tech uten Kaos på Skool](https://www.skool.com/mathilde/about)
+## Sider
+- [Forside](https://www.mathilde-junge.no/): hvem Mathilde hjelper, Tech-sjekken og kundeord.
+- [Tech uten Kaos](https://www.mathilde-junge.no/tech-uten-kaos): community på Skool. Standard 15 dollar i måneden. Premium 69 dollar i måneden med Tech Timen hver mandag kl. 12-14 (live med opptak), alle kursene i classroom og hjelp når du står fast.
+- [Hjelp 1:1](https://www.mathilde-junge.no/hjelp): Tech uten Kaos VIP-dag (halv dag 5 900 kr eks. mva., hel dag 10 900 kr eks. mva.), Panikk-knappen (2 900 kr eks. mva. for inntil 1 time), prosjekter til fast pris i Kajabi og flytting, for eksempel fra Kajabi til MailerLite.
+- [Om Mathilde](https://www.mathilde-junge.no/om-mathilde): historien, presse, podkaster og kundeord.
+- [Tech-sjekken](https://www.mathilde-junge.no/#tech-sjekken): gratis quiz på ni spørsmål som viser hvilke verktøy en gründer bør velge, hva de koster og hva hun trygt kan droppe.
 
 ## Kontakt
-Kontaktskjema på https://www.mathilde-junge.no/#kontakt
+- Email: hallo@mathildejunge.no
+- Gratis kartleggingssamtale på 30 minutter: https://calendly.com/mathildejunge/kartlegging
+- Instagram: https://www.instagram.com/mathildejunge.tech/

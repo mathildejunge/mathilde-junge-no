@@ -189,7 +189,7 @@
 
 <header class="meny">
   <div class="ramme">
-    <a class="logo" href="index.html">Mathilde Junge<span>.</span></a>
+    <a class="logo" href="/">Mathilde Junge<span>.</span></a>
     <a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about">Bli med<span class="lang">&nbsp;i&nbsp;Tech uten Kaos</span></a>
   </div>
 </header>
@@ -262,7 +262,7 @@
       staar: [
         "Du har gjort det mange smarte gründere gjør: du har kjøpt deg hjelp til det tekniske. Det løste problemet der og da, og det var riktig å gjøre i starten.",
         "Men neste gang noe skulle endres, måtte du betale igjen. Et bilde på siden, en link som ikke virker, en mail som ikke ble sendt. Du venter på svar, og businessen står stille imens. Det ser ut som alle andre har et team, mens du betaler for hver lille ting.",
-        "Jeg har vært den VA-en du ringer. Derfor vet jeg at mye av dette kan du lære å fikse selv, sånn at du bare betaler for hjelp når det gir mening."
+        "Jeg har vært hun du ringer når noe ikke virker. Derfor vet jeg at mye av dette kan du lære å fikse selv, sånn at du bare betaler for hjelp når det gir mening."
       ],
       koster: "Du blir avhengig av andres kalender, og hver lille endring koster både penger og dager. Og det verste: du føler deg som en gjest i din egen business.",
       droppe: [
@@ -417,7 +417,7 @@
         ["Livesendinger", "Google Meet eller Zoom", "Legg linken inn i kurset eller communityet ditt i Kajabi. Google Meet er gratis.", []],
         CLAUDE
       ],
-      ekstra: "Starter du Kajabi via linken min, får du også kurset mitt Kajabi gjort enkelt gratis, så lenge du har Kajabi via meg.",
+      ekstra: "Starter du Kajabi via linken min, får du også kurset mitt Kajabi gjort enkelt gratis, så lenge du har Kajabi via meg, og en time med meg.",
       steg: [
         ["Start med ett produkt og ett tilbud", "Du trenger ikke fem kurs før du har solgt det første."],
         ["Lag en landingsside med ett skjema", "Koble skjemaet til en kort velkomstmail. Mer trenger du ikke i starten."],
@@ -434,14 +434,14 @@
       hoved: "kajabi",
       velg: "En stor plattform til kursene og emailene dine, og WebinarFuel til webinarer som går av seg selv.",
       hvorfor: "Du vil selge store kurs og ha webinarer som går automatisk. Da trenger du en plattform som tåler mye, og et eget verktøy for automatiske webinarer. Kajabi er enklest å komme i gang med. GoHighLevel gir deg mer automatikk, men krever mer oppsett.",
-      sum: "Fra rundt 100 dollar i måneden, pluss webinarverktøyet.",
+      sum: "Kajabi fra 143 dollar i måneden, eller GoHighLevel Starter fra 97 dollar i måneden, pluss webinarverktøyet.",
       verktoy: [
         KAJABI,
         ["Alternativ med mer automatikk", "GoHighLevel", "Starter koster 97 dollar i måneden. Mer å sette opp selv.", []],
         ["Webinarer som går av seg selv", "WebinarFuel", "Prisen får du hos WebinarFuel.", []],
         CLAUDE
       ],
-      ekstra: "Starter du Kajabi via linken min, får du også kurset mitt Kajabi gjort enkelt gratis, så lenge du har Kajabi via meg.",
+      ekstra: "Starter du Kajabi via linken min, får du også kurset mitt Kajabi gjort enkelt gratis, så lenge du har Kajabi via meg, og en time med meg.",
       steg: [
         ["Få kurset til å selge live først", "Automatiske webinarer virker best når du vet hva som får folk til å kjøpe. Kjør webinaret live noen ganger først."],
         ["Velg en plattform og bli der", "Kajabi eller GoHighLevel, ikke begge. Samle alt på samme sted."],
@@ -475,7 +475,7 @@
   function int(k, lo, hi, d) { var v = parseInt(q.get(k), 10); return isNaN(v) ? d : Math.max(lo, Math.min(hi, v)); }
 
   if (!FELLER[f] || !PLATTFORMER[p]) {
-    main.innerHTML = '<section class="tom"><div class="ramme"><p class="etikett">Tech-sjekken</p><h1 style="font-size:clamp(2.2rem,5vw,3.6rem);margin-top:12px">Her mangler det et resultat</h1><p>Ta Tech-sjekken først, så får du din personlige side her.</p><a class="knapp knapp-rosa" href="index.html#quiz">Ta Tech-sjekken</a></div></section>';
+    main.innerHTML = '<section class="tom"><div class="ramme"><p class="etikett">Tech-sjekken</p><h1 style="font-size:clamp(2.2rem,5vw,3.6rem);margin-top:12px">Her mangler det et resultat</h1><p>Ta Tech-sjekken først, så får du din personlige side her.</p><a class="knapp knapp-rosa" href="/#tech-sjekken">Ta Tech-sjekken</a></div></section>';
     return;
   }
 
@@ -575,6 +575,7 @@
       var li = el("li"); var dv = el("div"); dv.appendChild(el("b", "", x[0])); dv.appendChild(el("span", "", x[1])); li.appendChild(dv); dl0.appendChild(li);
     });
     rd.appendChild(dl0);
+    if (d === 2) { var pk = el("p", "dato-intro"); pk.appendChild(document.createTextNode("Svikter noe rett før, finnes Panikk-knappen. ")); var pa = el("a", "", "Noe virker ikke nå →"); pa.href = "/hjelp#panikk-knappen"; pk.appendChild(pa); rd.appendChild(pk); }
     main.appendChild(dt);
   }
 
@@ -618,21 +619,22 @@
   // 7. Tech uten Kaos
   var tuk = el("section", "tuk");
   tuk.innerHTML = '<div class="ramme"><figure class="bue"><img src="bilder/mathilde-kaos.jpg" alt="Mathilde ved en skjerm full av åpne vinduer, med telefonen mot øret" width="1120" height="1400" loading="lazy"><span class="ai-merke">AI-bilde av meg</span></figure>' +
-    '<div><p class="etikett">Neste steg, hvis du vil</p><h2>Få hjelp til oppsettet i Tech uten <span class="kaos">Kaos</span>.</h2>' +
+    '<div><p class="etikett">Neste steg, hvis du vil</p><h2>Få hjelp til oppsettet i Tech uten <span class="kaos">Kaos</span> Premium.</h2>' +
     '<p class="tekst"></p>' +
-    '<ul><li>Tech Timen hver uke, der vi løser det du står fast i</li><li>Hjelp med ' + "" + '<span class="vk"></span>, steg for steg og uten fagspråk</li><li>Kurs i det du trenger nå, og opptak av alt</li></ul>' +
-    '<div class="knapperad"><a class="knapp knapp-rosa" href="https://www.skool.com/mathilde/about">Bli med i Tech uten Kaos →</a><span class="pris">Standard 15 dollar i måneden. Premium med full tilgang til meg 69 dollar i måneden. Skool viser foreløpig bare priser i dollar.</span></div></div></div>';
+    '<ul><li>Tech Timen hver mandag kl. 12-14, live med opptak</li><li>Hjelp med ' + "" + '<span class="vk"></span>, steg for steg og uten fagspråk</li><li>Alle kursene i classroom</li></ul>' +
+    '<div class="knapperad"><a class="knapp knapp-rosa" href="/tech-uten-kaos">Bli Premium →</a><span class="pris">Premium: 69 dollar i måneden. Du kan si opp når du vil, og prisen du kommer inn på, er låst så lenge du er medlem.</span></div><p class="hjelp-linje" style="margin-top:14px"></p></div></div>';
   tuk.querySelector("p.tekst").textContent = "Du har fått forslaget. Nå skal det settes opp, og det er der mange blir sittende fast. Inne i Tech uten Kaos tar vi det steg for steg, og du kan spørre om det samme så mange ganger du trenger.";
   tuk.querySelector(".vk").textContent = P.navn;
+  if (P.hoved === "kajabi") { var hl = tuk.querySelector(".hjelp-linje"); hl.appendChild(document.createTextNode("Vil du heller ha det satt opp, kan vi gjøre det på en VIP-dag eller som et prosjekt til fast pris. ")); var ha = el("a", "", "Se hjelp 1:1 →"); ha.href = "/hjelp"; hl.appendChild(ha); }
   main.appendChild(tuk);
 
   // 8. Hilsen
   var hil = el("section", "hilsen"); var r7 = el("div", "ramme"); hil.appendChild(r7);
-  r7.appendChild(el("p", "", "Du er ikke alene om å sitte i " + F.navn.toLowerCase() + ". Mange flinke gründere jeg møter, har vært der. Det betyr at veien ut finnes, og at den ofte er enklere enn du tror."));
+  r7.appendChild(el("p", "", "Du er ikke alene om å sitte i " + F.navn.toLowerCase() + ". Mange flinke gründere jeg møter, har vært der. Det betyr at veien ut finnes, og at du ikke trenger å finne den alene."));
   r7.appendChild(el("p", "hand", "Klem fra Mathilde 🤗"));
   var lenker = el("div", "lenker");
-  var a1 = el("a", "knapp knapp-strek", "Ta sjekken på nytt"); a1.href = "index.html#quiz"; lenker.appendChild(a1);
-  var a2 = el("a", "knapp knapp-strek", "Til forsiden"); a2.href = "index.html"; lenker.appendChild(a2);
+  var a1 = el("a", "knapp knapp-strek", "Ta sjekken på nytt"); a1.href = "/#tech-sjekken"; lenker.appendChild(a1);
+  var a2 = el("a", "knapp knapp-strek", "Til forsiden"); a2.href = "/"; lenker.appendChild(a2);
   r7.appendChild(lenker);
   main.appendChild(hil);
 })();
