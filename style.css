@@ -154,3 +154,8 @@ form.skjema{display:grid;gap:14px;margin-top:26px;max-width:560px}
 .lenkeknapp{background:none;border:0;font:inherit;font-size:.92rem;color:var(--dempet);text-decoration:underline;cursor:pointer;margin-top:14px;padding:0}
 .footlenker{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:10px}
 .footlenker a{color:#f6eef2}
+.personvern h2{font-size:clamp(1.15rem,3vw,1.5rem);margin:40px 0 12px}
+.personvern h2:first-child{margin-top:0}
+.personvern p+p{margin-top:12px}
+.personvern .sammenlign{font-size:.92rem}
+@media(max-width:700px){.personvern .sammenlign th,.personvern .sammenlign td{padding:10px 8px}}
